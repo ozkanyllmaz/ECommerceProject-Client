@@ -1,0 +1,293 @@
+/* Temel sıfırlama ve font ayarları */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Layout yapılandırması */
+.layout-container {
+    display: flex;
+    /* İçerisindeki öğelerin esnek bir şekilde konumlandırılması için Flexbox mimarisini başlatır. */
+    flex-direction: column;
+    /* İçerisindeki elemanların yatay yerine yukarıdan aşağıya (dikey sütun halinde) sıralanmasını sağlar. */
+    min-height: 100vh;
+    /* İçerik az olsa dahi, kapsayıcının asgari olarak tarayıcı ekranının tamamını kaplamasını garanti ederek yapının bozulmasını önler. */
+}
+
+/* Navigasyon bar tasarımı*/
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    /* İçerikleri yatay eksende köşelere yaslayarak (örneğin logo sola, linkler sağa) aralarındaki boşluğu maksimum seviyeye çıkarır.*/
+    align-items: center;
+    /* İçerisindeki öğelerin dikey eksende (yukarıdan aşağıya) birbirleriyle tam merkezde hizalanmasını sağlar. */
+    padding: 1.2rem 2rem;
+    /* Öğelerin dış çerçeveye yapışmasını engellemek için üst/alttan 1.2rem, sağ/soldan 2rem iç boşluk tanımlar. */
+    background-color: lightsteelblue;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    /* Arayüze derinlik ve katman hissi kazandırmak için alt kısıma hafif, saydam bir gölge efekti uygular. */
+}
+
+.logo a {
+    font-size: 1.5rem;
+    /*metin boyutunu kök elementin varsayılan boyutunun 1.5 katı olacak şekilde ayarlar.*/
+    font-weight: 600;
+    /* semi-bold*/
+    text-decoration: none;
+    /* Tıklanılabilirlik özelliğindeki altı çiziliyi kaldırır.*/
+    color: #0d6efd;
+    /* Metin rengi */
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #495057;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: #0d6efd;
+}
+
+/* Buton standartları */
+.login-btn,
+.logout-btn {
+    padding: 0.5rem 1.2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.login-btn:hover,
+.logout-btn:hover {
+    opacity: 0.8;
+}
+
+.login-btn {
+    background-color: #0d6efd;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.logout-btn {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+/* Ana içerik kapsayıcısı */
+.main-content {
+    flex: 1;
+    /* Flexbox mimarisinde kapsayıcının mevcut boş alanı tamamen dolduracak şekilde esnemesini sağlar (böylece alt bilgi alanını ekranın sonuna iter). */
+    padding: 2rem;
+    max-width: 1200px;
+    /* Geniş ekranlarda düzenin dağılmasını ve okunabilirliğin azalmasını önlemek amacıyla kapsayıcının maksimum genişliğini 1200 piksel ile sınırlandırır. */
+    margin: 0 auto;
+    /* Sağdan ve soldan otomatik eşit boşluk bırakarak, 1200 pikselden büyük ekranlarda ana içeriği sayfanın tam ortasına yatay olarak hizalar. */
+    width: 100%;
+    /* 1200 pikselden daha dar olan ekranlarda (mobil ve tablet) kapsayıcının mevcut genişliğin tamamını (%100) kullanmasını garanti eder. */
+}
+
+/* Loading Bileşeni Stilleri */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    width: 100%;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(13, 110, 253, 0.2);
+    border-left-color: #0d6efd;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh-80px);
+    /*header yüksekliğini çıkararak ortalama*/
+    background-color: #f8f9fa;
+}
+
+.auth-card {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 400px;
+}
+
+.auth-card h2 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #212529;
+    font-size: 1.5rem;
+}
+
+.auth-form .form-group {
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.auth-form .form-group .label-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 100%;
+}
+
+.auth-form .form-group .label-row .input-column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.auth-form .form-group .label-row .input-column input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.auth-form label {
+    margin-bottom: 0.5rem;
+    margin-top: 0.75rem;
+    ;
+    font-weight: 500;
+    color: #495057;
+    font-size: 0.9rem;
+}
+
+.auth-form input {
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.auth-form input:focus {
+    outline: none;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba (13, 110, 253, 0.15);
+}
+
+.auth-links {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.auth-links a{
+    color: #0056b3;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease-in-out;
+}
+
+.auth-links a:hover{
+    color: #003d82;
+    text-decoration: underline;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    background-color: #3b77a8;
+}
+
+.submit-btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+/* 403 UnAuthorized sayfası stilleri*/
+.unauthorized-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px); /* Navbar yüksekliği düşülerek hesaplanmıştır */
+    background-color: #f8f9fa;
+    padding: 2rem;
+}
+
+.unauthorized-content {
+    background: #ffffff;
+    padding: 3rem 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    max-width: 550px;
+    text-align: center;
+}
+
+.error-code {
+    font-size: 6rem;
+    font-weight: 700;
+    color: #dc3545; 
+    margin: 0;
+    line-height: 1;
+}
+
+.error-title {
+    font-size: 1.75rem;
+    color: #212529;
+    margin: 1.5rem 0 1rem 0;
+    font-weight: 600;
+}
+
+.error-message {
+    color: #495057;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.unauthorized-content .action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
