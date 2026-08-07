@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import api from "../services/api";
+import api from "../../services/api";
+import styles from './Login.module.css';
 
 
 const Login = () => {
@@ -59,12 +60,12 @@ const Login = () => {
     };
 
     return (
-        <div className="auth-container">
-            <div className="auth-card">
+        <div className={styles.authContainer}>
+            <div className={styles.authCard}>
                 <h2>Sisteme Giriş</h2>
-                <form onSubmit={handleSubmit} className="auth-form">
+                <form onSubmit={handleSubmit} className={styles.authForm}>
 
-                    <div className="form-group">
+                    <div className={styles.formGroup}>
                         <label htmlFor="email">E-Posta Adresi</label>
                         <input 
                             type="email"
@@ -78,7 +79,7 @@ const Login = () => {
                         />
                     </div>
 
-                    <div className="form-group">
+                    <div className={styles.formGroup}>
                         <label htmlFor="password">Şifre</label>
                         <input 
                             type="password"
@@ -92,10 +93,10 @@ const Login = () => {
                         />
                     </div>
 
-                    <button type="submit" className="submit-btn" disabled={isLoading}>
+                    <button type="submit" className="btn btn-primary" disabled={isLoading}>
                         { isLoading ? 'Giriş Yapılıyor' : 'Giriş Yap'}
                     </button>
-                    <div className="auth-links">
+                    <div className={styles.authLinks}>
                         <p>Hesabınız yok mu? <Link to="/register">Kayıt Ol</Link></p>
                     </div>
 

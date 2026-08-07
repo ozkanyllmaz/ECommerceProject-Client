@@ -1,0 +1,245 @@
+/* src/components/Layout/Layout.module.css */
+
+/* --- DUYURU ÇUBUĞU (ANNOUNCEMENT BAR) --- */
+.announcementBar {
+    background-color: #000000;
+    color: #ffffff;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 0.5rem 0;
+    width: 100%;
+    position: relative;
+    z-index: 1001; /* Navbar'ın üzerinde kalmasını garantiler */
+    display: flex;
+}
+
+.marqueeContainer {
+    display: flex;
+    width: fit-content;
+    /* Animasyon süresini metin uzunluğuna göre artırıp azaltabilirsiniz */
+    animation: marqueeScroll 25s linear infinite; 
+}
+
+/* Kullanıcı okumak için fareyi üzerine getirdiğinde kaymayı durdurur */
+.marqueeContainer:hover {
+    animation-play-state: paused;
+}
+
+.marqueeItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 3rem; /* Metinler arası boşluk */
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Kesintisiz döngü için kapsayıcının tam yarısına kadar kaydırma işlemi */
+@keyframes marqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+
+.layoutContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- HEADER ANA TAŞIYICI --- */
+.globalHeader {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 1rem 2rem;
+}
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    gap: 2rem; /* Elemanlar arası varsayılan boşluk */
+}
+
+/* --- 1. SOL BÖLÜM: LOGO --- */
+.logo a {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--primary-blue, #0d6efd);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    white-space: nowrap; /* Logonun alt satıra inmesini engeller */
+}
+
+/* --- 2. ORTA BÖLÜM: ARAMA ÇUBUĞU --- */
+.searchContainer {
+    flex: 1; /* Mevcut boş alanı olabildiğince kaplar */
+    max-width: 600px; /* Çok fazla uzamasını engeller */
+}
+
+.searchForm {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+    background-color: #f8f9fa;
+}
+
+.searchForm:focus-within {
+    border-color: #212529;
+    background-color: #ffffff;
+}
+
+.searchInput {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+    color: #495057;
+    background-color: transparent;
+}
+
+.searchButton {
+    background-color: transparent;
+    border: none;
+    padding: 0 1.25rem;
+    cursor: pointer;
+    color: #212529;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.searchButton:hover {
+    color: var(--primary-blue, #0d6efd);
+}
+
+/* --- 3. SAĞ BÖLÜM: NAVİGASYON VE BUTONLAR --- */
+.rightNav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.navLink {
+    text-decoration: none;
+    color: #495057;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+    white-space: nowrap;
+}
+
+.navLink:hover {
+    color: var(--primary-blue, #0d6efd);
+}
+
+/* --- DROPDOWN (AÇILIR MENÜ) MİMARİSİ --- */
+.dropdown {
+    position: relative; /* İçerisindeki mutlak konumlandırılmış menüyü sınırlar */
+    display: inline-block;
+}
+
+.dropdownToggle {
+    text-decoration: none;
+    color: #495057;
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Fare ile üzerine gelindiğinde menüyü görünür yapar */
+.dropdown:hover .dropdownMenu {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdownMenu {
+    position: absolute;
+    top: 100%; /* Toggle elementinin hemen altından başlar */
+    left: 0;
+    background-color: #ffffff;
+    min-width: 200px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0;
+    z-index: 1001;
+    
+    /* Animasyonlu açılış için başlangıç değerleri */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.2s ease-in-out;
+}
+
+.dropdownItem {
+    padding: 0.75rem 1.5rem;
+    color: #495057;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.dropdownItem:hover {
+    background-color: #f8f9fa;
+    color: var(--primary-blue, #0d6efd);
+}
+
+
+.logoutBtn {
+    padding: 0.5rem 1rem;
+    background-color: #f1f5f9;
+    color: #475569;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.logoutBtn:hover {
+    background-color: #e2e8f0;
+    color: #1e293b;
+}
+
+.loginBtn {
+    padding: 0.5rem 1.25rem;
+    background-color: #2563eb;
+    color: white !important;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.loginBtn:hover {
+    background-color: #1d4ed8;
+}
+
+.mainContent {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    background-color: #f8f9fa;
+}

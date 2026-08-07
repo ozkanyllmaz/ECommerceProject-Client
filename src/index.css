@@ -1,517 +1,121 @@
-/* Temel sıfırlama ve font ayarları */
+
+
+/* --- 1. CSS SIFIRLAMA (RESET) --- */
+/* Tarayıcıların varsayılan boşluklarını sıfırlayarak tüm tarayıcılarda standart bir görünüm sağlar. */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* --- 2. GLOBAL GÖVDE VE TİPOGRAFİ --- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f8f9fa;
-    color: #333;
-}
-
-/* Layout yapılandırması */
-.layout-container {
-    display: flex;
-    /* İçerisindeki öğelerin esnek bir şekilde konumlandırılması için Flexbox mimarisini başlatır. */
-    flex-direction: column;
-    /* İçerisindeki elemanların yatay yerine yukarıdan aşağıya (dikey sütun halinde) sıralanmasını sağlar. */
-    min-height: 100vh;
-    /* İçerik az olsa dahi, kapsayıcının asgari olarak tarayıcı ekranının tamamını kaplamasını garanti ederek yapının bozulmasını önler. */
-}
-
-/* Navigasyon bar tasarımı*/
-.navbar {
-    display: flex;
-    justify-content: space-between; /* İçerikleri yatay eksende köşelere yaslayarak (örneğin logo sola, linkler sağa) aralarındaki boşluğu maksimum seviyeye çıkarır.*/
-    align-items: center; /* İçerisindeki öğelerin dikey eksende (yukarıdan aşağıya) birbirleriyle tam merkezde hizalanmasını sağlar. */
-    padding: 0.75rem 2rem;  /* Öğelerin dış çerçeveye yapışmasını engellemek için üst/alttan 1.2rem, sağ/soldan 2rem iç boşluk tanımlar. */
-    background-color: #ffffff;
-    border-bottom: 1px solid #e2e8f0;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05); /* Arayüze derinlik ve katman hissi kazandırmak için alt kısıma hafif, saydam bir gölge efekti uygular. */
-    font-family: 'Inter', sans-serif;
-}
-.logo-container a {
-    font-weight: 700;
-    font-size: 1.25rem;
-    color: #1e293b;
-    text-decoration: none;
-    letter-spacing: -0.025em;
-}
-
-.logo a {
-    font-size: 1.5rem;
-    /*metin boyutunu kök elementin varsayılan boyutunun 1.5 katı olacak şekilde ayarlar.*/
-    font-weight: 600;
-    /* semi-bold*/
-    text-decoration: none;
-    /* Tıklanılabilirlik özelliğindeki altı çiziliyi kaldırır.*/
-    color: #0d6efd;
-    /* Metin rengi */
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-
-.nav-links a {
-    text-decoration: none;
-    color: #64748b;
-    font-size: 0.925rem;
-    font-weight: 500;
-    transition: color 0.2s;
-}
-
-.nav-links a:hover {
-    color: #2563eb;
-}
-
-/* Buton standartları */
-.logout-btn {
-    padding: 0.5rem 1rem;
-    background-color: #f1f5f9;
-    color: #475569;
-    border: none;
-    border-radius: 6px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.logout-btn:hover {
-    background-color: #e2e8f0;
-    color: #1e293b;
-}
-
-.login-btn {
-    padding: 0.5rem 1.25rem;
-    background-color: #2563eb;
-    color: white !important;
-    border-radius: 6px;
-    font-weight: 600;
-}
-
-.login-btn:hover {
-    background-color: #1d4ed8;
-}
-
-/* Ana içerik kapsayıcısı */
-.main-content {
-    flex: 1;
-    /* Flexbox mimarisinde kapsayıcının mevcut boş alanı tamamen dolduracak şekilde esnemesini sağlar (böylece alt bilgi alanını ekranın sonuna iter). */
-    padding: 2rem;
-    max-width: 1200px;
-    /* Geniş ekranlarda düzenin dağılmasını ve okunabilirliğin azalmasını önlemek amacıyla kapsayıcının maksimum genişliğini 1200 piksel ile sınırlandırır. */
-    margin: 0 auto;
-    /* Sağdan ve soldan otomatik eşit boşluk bırakarak, 1200 pikselden büyük ekranlarda ana içeriği sayfanın tam ortasına yatay olarak hizalar. */
-    width: 100%;
-    /* 1200 pikselden daha dar olan ekranlarda (mobil ve tablet) kapsayıcının mevcut genişliğin tamamını (%100) kullanmasını garanti eder. */
-}
-
-/* Loading Bileşeni Stilleri */
-.loading-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 200px;
-    width: 100%;
-}
-
-.spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid rgba(13, 110, 253, 0.2);
-    border-left-color: #0d6efd;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-bottom: 1rem;
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.auth-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh-80px);
-    /*header yüksekliğini çıkararak ortalama*/
-    background-color: #f8f9fa;
-}
-
-.auth-card {
-    background: #ffffff;
-    padding: 2.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    width: 100%;
-    max-width: 400px;
-}
-
-.auth-card h2 {
-    margin-bottom: 1.5rem;
-    text-align: center;
-    color: #212529;
-    font-size: 1.5rem;
-}
-
-.auth-form .form-group {
-    margin-bottom: 1.25rem;
-    display: flex;
-    flex-direction: column;
-
-}
-
-.auth-form .form-group .label-row {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    width: 100%;
-}
-
-.auth-form .form-group .label-row .input-column {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-width: 0;
-}
-
-.auth-form .form-group .label-row .input-column input {
-    width: 100%;
-    box-sizing: border-box;
-}
-
-
-.auth-form label {
-    margin-bottom: 0.5rem;
-    margin-top: 0.75rem;
-    ;
-    font-weight: 500;
-    color: #495057;
-    font-size: 0.9rem;
-}
-
-.auth-form input {
-    padding: 0.75rem;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-.auth-form input:focus {
-    outline: none;
-    border-color: #0d6efd;
-    box-shadow: 0 0 0 3px rgba (13, 110, 253, 0.15);
-}
-
-.auth-links {
-    text-align: center;
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    color: #6c757d;
-}
-
-.auth-links a {
-    color: #0056b3;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.2s ease-in-out;
-}
-
-.auth-links a:hover {
-    color: #003d82;
-    text-decoration: underline;
-}
-
-.submit-btn {
-    width: 100%;
-    padding: 0.75rem;
-    background-color: #0d6efd;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    margin-top: 1rem;
-}
-
-.submit-btn:hover {
-    background-color: #3b77a8;
-}
-
-.submit-btn:disabled {
-    background-color: #6c757d;
-    cursor: not-allowed;
-}
-
-/* 403 UnAuthorized sayfası stilleri*/
-.unauthorized-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 80px);
-    /* Navbar yüksekliği düşülerek hesaplanmıştır */
-    background-color: #f8f9fa;
-    padding: 2rem;
-}
-
-.unauthorized-content {
-    background: #ffffff;
-    padding: 3rem 2.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    max-width: 550px;
-    text-align: center;
-}
-
-.error-code {
-    font-size: 6rem;
-    font-weight: 700;
-    color: #dc3545;
-    margin: 0;
-    line-height: 1;
-}
-
-.error-title {
-    font-size: 1.75rem;
-    color: #212529;
-    margin: 1.5rem 0 1rem 0;
-    font-weight: 600;
-}
-
-.error-message {
-    color: #495057;
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-}
-
-.unauthorized-content .action-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-}
-
-/* Profil Sayfası Stilleri */
-.profile-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 3rem 1rem;
-    min-height: calc(100vh - 80px);
-    background-color: #f8f9fa;
-}
-
-.profile-card {
-    background: #ffffff;
-    padding: 2.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    width: 100%;
-    max-width: 600px;
-}
-
-.page-card h2 {
-    color: #212529;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.page-card .divider {
-    border: 0;
-    height: 1px;
-    background: #e9ecef;
-    margin-bottom: 2rem;
-}
-
-.profile-form .disabled-input {
-    background-color: #e9ecef;
-    cursor: not-allowed;
-    color: #6c757d;
-}
-
-.profile-form .form-text {
-    display: block;
-    margin-top: 0.5rem;
-    font-size: 0.85rem;
-    color: #6c757d;
-}
-
-.profile-form .btn-primary {
-    margin-top: 1.5rem;
-    width: 100%;
-}
-
-
-/* --- GLOBAL SAYFA VE KART DÜZENİ --- */
-
-/* Tüm sayfaları kapsayan, dikeyde ve yatayda ortalama yapan ana taşıyıcı */
-.page-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 3rem 1rem;
-    min-height: calc(100vh - 80px);
-    /* Navbar yüksekliği düşülmüş hal */
-    background-color: #f8f9fa;
-}
-
-/* Formları veya profil bilgilerini saran, gölgeli beyaz kart */
-.content-card {
-    background: #ffffff;
-    padding: 2.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    width: 100%;
-    max-width: 600px;
-    /* Çok genişlemesini engeller */
-}
-
-/* Kart içi başlıklar ve ayraçlar */
-.content-card h2 {
-    color: #212529;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    text-align: center;
-    /* İsteğe bağlı: Login ve Register'da güzel durur */
-}
-
-.content-card .divider {
-    border: 0;
-    height: 1px;
-    background: #e9ecef;
-    margin-bottom: 2rem;
-}
-
-
-/* --- GLOBAL FORM VE INPUT STİLLERİ --- */
-
-/* Her bir input/label grubunu saran taşıyıcı */
-.form-group {
-    margin-bottom: 0.5rem;
-}
-
-/* Standart etiket (Label) görünümü */
-.form-group label {
-    display: block;
-    font-weight: 500;
     color: #333333;
-    margin-bottom: 0.4rem;
-    font-size: 0.9rem;
+    -webkit-font-smoothing: antialiased; /* Metinlerin daha pürüzsüz ve profesyonel okunmasını sağlar */
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
 }
 
-/* Standart veri giriş (Input, Select, Textarea) alanları */
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    box-sizing: border-box;
-    /* Padding'in genişliğe dahil edilmesini kesinleştirir */
-    font-size: 1rem;
-    color: #495057;
-    background-color: #ffffff;
-    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+/* --- 3. ROOT DEĞİŞKENLERİ (İsteğe Bağlı ama Önerilir) --- */
+/* İlerleyen aşamalarda modüllerinizin içerisinde standart renkleri kullanabilmeniz için kurumsal renk paletiniz */
+:root {
+    --primary-blue: #0d6efd;
+    --primary-dark: #0056b3;
+    --text-main: #212529;
+    --text-muted: #6c757d;
+    --bg-light: #f8f9fa;
+    --border-light: #e2e8f0;
+    --error-red: #dc3545;
 }
 
-/* Input odaklanma (Focus) durumu */
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #0056b3;
-    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
-    /* Kurumsal mavi odaklanma halkası */
-}
 
-/* Devre dışı (Disabled) veya salt okunur inputlar */
-.form-group input:disabled,
-.form-group input[readonly] {
-    background-color: #e9ecef;
-    cursor: not-allowed;
-    color: #6c757d;
-}
 
-/* Hata uyarı metinleri ve bilgilendirmeler */
-.form-text {
-    display: block;
-    margin-top: 0.4rem;
-    font-size: 0.85rem;
-    color: #6c757d;
-}
 
-/* --- YAN YANA INPUT YERLEŞİMLERİ (Örn: Ad ve Soyad) --- */
 
-/* Yatay kapsayıcı (Önceki label-row yerine) */
-.form-row {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    width: 100%;
-}
 
-/* Dikey sütun (Önceki input-column yerine) */
-.form-col {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-width: 0;
-    /* Taşıp yapıyı bozmasını engeller */
-}
+/* --- GLOBAL BUTON SİSTEMİ --- */
 
-/* --- GLOBAL BUTON STİLLERİ --- */
-.btn-primary {
-    width: 100%;
-    background-color: #0056b3;
-    color: #ffffff;
-    padding: 0.75rem;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
+/* Temel Buton İskeleti (Tüm butonların ortak özellikleri) */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 1.25rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
     font-weight: 600;
+    border: 1px solid transparent;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    line-height: 1.5;
+}
+
+.btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/* 1. Birincil Aksiyon (Kaydet, Onayla, Gönder) */
+.btn-primary {
+    background-color: var(--primary-blue, #0d6efd);
+    color: #ffffff;
 }
 
 .btn-primary:hover:not(:disabled) {
-    background-color: #004494;
+    background-color: var(--primary-dark, #0056b3);
 }
 
-.btn-primary:disabled {
-    background-color: #8bb3dc;
-    cursor: not-allowed;
+/* 2. İkincil Aksiyon (İptal, Geri Dön) */
+.btn-secondary {
+    background-color: #6c757d;
+    color: #ffffff;
 }
 
-
-/* --- PROFİL FORMU ÖZEL STİLLERİ --- */
-.profile-form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+.btn-secondary:hover:not(:disabled) {
+    background-color: #5a6268;
 }
 
-.profile-form label {
-    margin-bottom: 0.5rem;
-    margin-top: 0.75rem;
-    font-weight: 500;
-    color: #495057;
-    font-size: 0.9rem;
+/* 3. Başarılı İşlem (Tamamlandı, Eklendi) */
+.btn-success {
+    background-color: #198754;
+    color: #ffffff;
 }
 
-/* Profil sayfasındaki kaydet butonunu form elemanlarından görsel olarak ayırmak için */
-.profile-form .btn-primary {
-    margin-top: 1.5rem;
+.btn-success:hover:not(:disabled) {
+    background-color: #157347;
+}
+
+/* 4. Uyarı / Bekleme (Yönetici Onayı, Dikkat) */
+.btn-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.btn-warning:hover:not(:disabled) {
+    background-color: #e0a800;
+}
+
+/* 5. Tehlikeli İşlem (Sil, Reddet) */
+.btn-danger {
+    background-color: var(--error-red, #dc3545);
+    color: #ffffff;
+}
+
+.btn-danger:hover:not(:disabled) {
+    background-color: #c82333;
+}
+
+/* 6. Dış Hatlı Buton (Alternatif İkincil) */
+.btn-outline {
+    background-color: transparent;
+    border-color: var(--primary-blue, #0d6efd);
+    color: var(--primary-blue, #0d6efd);
+}
+
+.btn-outline:hover:not(:disabled) {
+    background-color: var(--primary-blue, #0d6efd);
+    color: #ffffff;
 }

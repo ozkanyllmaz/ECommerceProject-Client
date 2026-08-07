@@ -1,0 +1,119 @@
+
+
+.authContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px); /* Header yüksekliği düşülerek ortalama */
+    background-color: #f8f9fa;
+}
+
+.authCard {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 400px;
+}
+
+.authCard h2 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #212529;
+    font-size: 1.5rem;
+}
+
+.authForm {
+    width: 100%;
+}
+
+.formGroup {
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.labelRow {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 100%;
+}
+
+.inputColumn {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.inputColumn input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.authForm label {
+    margin-bottom: 0.5rem;
+    margin-top: 0.75rem;
+    font-weight: 500;
+    color: #495057;
+    font-size: 0.9rem;
+}
+
+.authForm input {
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.authForm input:focus {
+    outline: none;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+}
+
+.authLinks {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.authLinks a {
+    color: #0056b3;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease-in-out;
+}
+
+.authLinks a:hover {
+    color: #003d82;
+    text-decoration: underline;
+}
+
+.submitBtn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 1rem;
+}
+
+.submitBtn:hover:not(:disabled) {
+    background-color: #3b77a8;
+}
+
+.submitBtn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}

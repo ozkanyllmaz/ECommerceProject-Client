@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import api from "../services/api";
+import api from "../../services/api";
+import styles from './Register.module.css';
 
 
 const Register = () => {
@@ -68,13 +69,13 @@ const Register = () => {
 
 
     return (
-        <div className="auth-container">
-            <div className="auth-card">
+        <div className={styles.authContainer}>
+            <div className={styles.authCard}>
                 <h2>Yeni Kullanıcı Kaydı</h2>
-                <form onSubmit={handleSubmit} className="auth-form">
-                    <div className="form-group">
-                        <div className="label-row">
-                            <div className="input-column">
+                <form onSubmit={handleSubmit} className={styles.authForm}>
+                    <div className={styles.formGroup}>
+                        <div className={styles.labelRow}>
+                            <div className={styles.inputColumn}>
                                 <label htmlFor="firstName">Ad</label>
                                 <input
                                     type="text"
@@ -86,7 +87,7 @@ const Register = () => {
                                 />
                             </div>
 
-                            <div className="input-column">
+                            <div className={styles.inputColumn}>
                                 <label htmlFor="lastName">Soyad</label>
                                 <input
                                     type="text"
@@ -133,11 +134,11 @@ const Register = () => {
                             autoComplete="new-password"
                         />
                     </div>
-                    <button type="submit" className="submit-btn" disabled={isLoading}>
+                    <button type="submit" className={styles.submitBtn} disabled={isLoading}>
                         {isLoading ? 'İşleminiz Gerçekleştiriliyor' : 'Kayıt Ol'}
                     </button>
                 </form>
-                <div className="auth-links">
+                <div className={styles.authLinks}>
                     <p>Zaten bir hesabınız var mı? <Link to="/login">Giriş Yapın</Link></p>
                 </div>
 

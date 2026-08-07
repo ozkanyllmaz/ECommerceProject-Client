@@ -1,13 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../pages/Home";
-import Login from "../pages/Login";
-import NotFound from "../pages/NotFound";
-import Dashboard from "../pages/Dashboard";
+import Home from "../pages/Home/Home";
+import Login from "../pages/Login/Login";
+import NotFound from "../pages/NotFound/NotFound";
+import Dashboard from "../pages/Dashboard/Dashboard";
 import ProtectedRoute from "./ProtectedRoute";
-import Layout from "../components/Layout";
-import Register from "../pages/Register";
-import UnAuthorized from "../pages/UnAuthorized";
-import Profile from "../pages/Profile";
+import Layout from "../components/Layout/Layout";
+import Register from "../pages/Register/Register";
+import UnAuthorized from "../pages/UnAuthorized/UnAuthorized";
+import Profile from "../pages/Profile/Profile";
 
 export const router = createBrowserRouter([
     {

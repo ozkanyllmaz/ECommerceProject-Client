@@ -1,8 +1,9 @@
 
 import { useState, useEffect } from "react"
 import { toast } from "react-toastify"
-import api from "../services/api"
-import Loading from "../components/Loading"
+import api from "../../services/api"
+import Loading from "../../components/Loading/Loading"
+import styles from './Profile.module.css';
 
 const Profile = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -85,15 +86,15 @@ const Profile = () => {
 
 
     return (
-        <div className="page-container">
-            <div className="page-card">
+        <div className={styles.pageContainer}>
+            <div className={styles.pageCard}>
                 <h2>Profil Bilgileri</h2>
-                <hr className="divider" />
-                <form onSubmit={handleSubmit} className="profile-form">
+                <hr className={styles.divider} />
+                <form onSubmit={handleSubmit} className={styles.profileForm}>
 
-                    <div className="form-group">
-                        <div className="label-row">
-                            <div className="input-column">
+                    <div className={styles.formGroup}>
+                        <div className={styles.labelRow}>
+                            <div className={styles.inputColumn}>
                                 <label htmlFor="firstName">Ad</label>
                                 <input 
                                     type="text"
@@ -105,7 +106,7 @@ const Profile = () => {
                                 />
                             </div>
 
-                            <div className="input-column">
+                            <div className={styles.inputColumn}>
                                 <label htmlFor="lastName">Soyad</label>
                                 <input 
                                     type="text"
@@ -119,7 +120,7 @@ const Profile = () => {
                         </div>
                     </div>
 
-                    <div className="form-group">
+                    <div className={styles.formGroup}>
                         <label htmlFor="email">E-Posta</label>
                         <input 
                             type="email"
@@ -130,10 +131,10 @@ const Profile = () => {
                             disabled={true}
                             className="disabled-input"
                         />
-                        <smal className="form-text text-muted">E-Posta adresinizi değiştirmek için sistem yöneticiniz ile iletişime geçiniz.</smal>
+                        <smal className={styles.formText}>E-Posta adresinizi değiştirmek için sistem yöneticiniz ile iletişime geçiniz.</smal>
                     </div>
 
-                    <button type="submit" className="btn-primary" disabled={isUpdating}>
+                    <button type="submit" className={styles.btnPrimary} disabled={isUpdating}>
                         {isUpdating ? 'Güncelleniyor' : 'Bilgileri Kaydet'}
                     </button>
                 </form>
