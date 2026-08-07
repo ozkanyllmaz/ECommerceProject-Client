@@ -24,15 +24,20 @@ body {
 /* Navigasyon bar tasarımı*/
 .navbar {
     display: flex;
-    justify-content: space-between;
-    /* İçerikleri yatay eksende köşelere yaslayarak (örneğin logo sola, linkler sağa) aralarındaki boşluğu maksimum seviyeye çıkarır.*/
-    align-items: center;
-    /* İçerisindeki öğelerin dikey eksende (yukarıdan aşağıya) birbirleriyle tam merkezde hizalanmasını sağlar. */
-    padding: 1.2rem 2rem;
-    /* Öğelerin dış çerçeveye yapışmasını engellemek için üst/alttan 1.2rem, sağ/soldan 2rem iç boşluk tanımlar. */
-    background-color: lightsteelblue;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    /* Arayüze derinlik ve katman hissi kazandırmak için alt kısıma hafif, saydam bir gölge efekti uygular. */
+    justify-content: space-between; /* İçerikleri yatay eksende köşelere yaslayarak (örneğin logo sola, linkler sağa) aralarındaki boşluğu maksimum seviyeye çıkarır.*/
+    align-items: center; /* İçerisindeki öğelerin dikey eksende (yukarıdan aşağıya) birbirleriyle tam merkezde hizalanmasını sağlar. */
+    padding: 0.75rem 2rem;  /* Öğelerin dış çerçeveye yapışmasını engellemek için üst/alttan 1.2rem, sağ/soldan 2rem iç boşluk tanımlar. */
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05); /* Arayüze derinlik ve katman hissi kazandırmak için alt kısıma hafif, saydam bir gölge efekti uygular. */
+    font-family: 'Inter', sans-serif;
+}
+.logo-container a {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #1e293b;
+    text-decoration: none;
+    letter-spacing: -0.025em;
 }
 
 .logo a {
@@ -52,42 +57,47 @@ body {
     gap: 1.5rem;
 }
 
+
 .nav-links a {
     text-decoration: none;
-    color: #495057;
+    color: #64748b;
+    font-size: 0.925rem;
     font-weight: 500;
     transition: color 0.2s;
 }
 
 .nav-links a:hover {
-    color: #0d6efd;
+    color: #2563eb;
 }
 
 /* Buton standartları */
-.login-btn,
 .logout-btn {
-    padding: 0.5rem 1.2rem;
+    padding: 0.5rem 1rem;
+    background-color: #f1f5f9;
+    color: #475569;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    border-radius: 6px;
+    font-size: 0.875rem;
     font-weight: 600;
-    transition: opacity 0.2s;
+    cursor: pointer;
+    transition: all 0.2s;
 }
 
-.login-btn:hover,
 .logout-btn:hover {
-    opacity: 0.8;
+    background-color: #e2e8f0;
+    color: #1e293b;
 }
 
 .login-btn {
-    background-color: #0d6efd;
-    color: #ffffff;
-    text-decoration: none;
+    padding: 0.5rem 1.25rem;
+    background-color: #2563eb;
+    color: white !important;
+    border-radius: 6px;
+    font-weight: 600;
 }
 
-.logout-btn {
-    background-color: #dc3545;
-    color: #ffffff;
+.login-btn:hover {
+    background-color: #1d4ed8;
 }
 
 /* Ana içerik kapsayıcısı */
@@ -210,14 +220,14 @@ body {
     color: #6c757d;
 }
 
-.auth-links a{
+.auth-links a {
     color: #0056b3;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.2s ease-in-out;
 }
 
-.auth-links a:hover{
+.auth-links a:hover {
     color: #003d82;
     text-decoration: underline;
 }
@@ -250,7 +260,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 80px); /* Navbar yüksekliği düşülerek hesaplanmıştır */
+    min-height: calc(100vh - 80px);
+    /* Navbar yüksekliği düşülerek hesaplanmıştır */
     background-color: #f8f9fa;
     padding: 2rem;
 }
@@ -267,7 +278,7 @@ body {
 .error-code {
     font-size: 6rem;
     font-weight: 700;
-    color: #dc3545; 
+    color: #dc3545;
     margin: 0;
     line-height: 1;
 }
@@ -290,4 +301,217 @@ body {
     display: flex;
     justify-content: center;
     gap: 1rem;
+}
+
+/* Profil Sayfası Stilleri */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 3rem 1rem;
+    min-height: calc(100vh - 80px);
+    background-color: #f8f9fa;
+}
+
+.profile-card {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 600px;
+}
+
+.page-card h2 {
+    color: #212529;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.page-card .divider {
+    border: 0;
+    height: 1px;
+    background: #e9ecef;
+    margin-bottom: 2rem;
+}
+
+.profile-form .disabled-input {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+    color: #6c757d;
+}
+
+.profile-form .form-text {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.profile-form .btn-primary {
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+
+/* --- GLOBAL SAYFA VE KART DÜZENİ --- */
+
+/* Tüm sayfaları kapsayan, dikeyde ve yatayda ortalama yapan ana taşıyıcı */
+.page-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 3rem 1rem;
+    min-height: calc(100vh - 80px);
+    /* Navbar yüksekliği düşülmüş hal */
+    background-color: #f8f9fa;
+}
+
+/* Formları veya profil bilgilerini saran, gölgeli beyaz kart */
+.content-card {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 600px;
+    /* Çok genişlemesini engeller */
+}
+
+/* Kart içi başlıklar ve ayraçlar */
+.content-card h2 {
+    color: #212529;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    /* İsteğe bağlı: Login ve Register'da güzel durur */
+}
+
+.content-card .divider {
+    border: 0;
+    height: 1px;
+    background: #e9ecef;
+    margin-bottom: 2rem;
+}
+
+
+/* --- GLOBAL FORM VE INPUT STİLLERİ --- */
+
+/* Her bir input/label grubunu saran taşıyıcı */
+.form-group {
+    margin-bottom: 0.5rem;
+}
+
+/* Standart etiket (Label) görünümü */
+.form-group label {
+    display: block;
+    font-weight: 500;
+    color: #333333;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+}
+
+/* Standart veri giriş (Input, Select, Textarea) alanları */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+    /* Padding'in genişliğe dahil edilmesini kesinleştirir */
+    font-size: 1rem;
+    color: #495057;
+    background-color: #ffffff;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Input odaklanma (Focus) durumu */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #0056b3;
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+    /* Kurumsal mavi odaklanma halkası */
+}
+
+/* Devre dışı (Disabled) veya salt okunur inputlar */
+.form-group input:disabled,
+.form-group input[readonly] {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+    color: #6c757d;
+}
+
+/* Hata uyarı metinleri ve bilgilendirmeler */
+.form-text {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+/* --- YAN YANA INPUT YERLEŞİMLERİ (Örn: Ad ve Soyad) --- */
+
+/* Yatay kapsayıcı (Önceki label-row yerine) */
+.form-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 100%;
+}
+
+/* Dikey sütun (Önceki input-column yerine) */
+.form-col {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    /* Taşıp yapıyı bozmasını engeller */
+}
+
+/* --- GLOBAL BUTON STİLLERİ --- */
+.btn-primary {
+    width: 100%;
+    background-color: #0056b3;
+    color: #ffffff;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: #004494;
+}
+
+.btn-primary:disabled {
+    background-color: #8bb3dc;
+    cursor: not-allowed;
+}
+
+
+/* --- PROFİL FORMU ÖZEL STİLLERİ --- */
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.profile-form label {
+    margin-bottom: 0.5rem;
+    margin-top: 0.75rem;
+    font-weight: 500;
+    color: #495057;
+    font-size: 0.9rem;
+}
+
+/* Profil sayfasındaki kaydet butonunu form elemanlarından görsel olarak ayırmak için */
+.profile-form .btn-primary {
+    margin-top: 1.5rem;
 }

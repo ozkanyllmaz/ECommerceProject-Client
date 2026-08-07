@@ -13,9 +13,9 @@ const api = axios.create({
 // Request Intercepter: Her istekten önce çalışır
 api.interceptors.request.use(
     (config) => {
-        const token = localStorage.getItem("accessToken");
+        const token = localStorage.getItem('accessToken');
         if (token) {
-            config.headers.Authorization = 'Bearer ${token}'
+            config.headers.Authorization = `Bearer ${token}`;
         }
         return config;
     },

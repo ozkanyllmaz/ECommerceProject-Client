@@ -7,6 +7,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import Layout from "../components/Layout";
 import Register from "../pages/Register";
 import UnAuthorized from "../pages/UnAuthorized";
+import Profile from "../pages/Profile";
 
 export const router = createBrowserRouter([
     {
@@ -29,6 +30,7 @@ export const router = createBrowserRouter([
                 path: 'unauthorized',
                 element: <UnAuthorized />
             },
+            // Admin in erişebileceği sayfalar
             {
                 // yalnızca giriş yapmış kullanıcıların erişebileceği rotalar
                 element: <ProtectedRoute allowedRoles={['Admin']}/>,
@@ -39,6 +41,16 @@ export const router = createBrowserRouter([
                 },
                 // sepet onaylama, sipariş geçmişi vs..
             ]
+            },
+            // Tüm rollerin erişebileceği sayfalar
+            {
+                element: <ProtectedRoute allowedRoles={['Admin', 'Manager', 'Customer']} />,
+                children: [
+                    {
+                        path: 'profile',
+                        element: <Profile />,
+                    },
+                ]
             },
         ],
     },

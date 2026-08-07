@@ -15,7 +15,7 @@ const Layout = () => {
             const decodedToken = jwtDecode(token);
 
             // ASP.NET Core varsayılan claim yapısı veya özel 'role' anahtarı kontrolü
-            const roleClaim = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] || decodedToken.roleClaim;
+            const roleClaim = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] || decodedToken.role;
 
             if (Array.isArray(roleClaim)) {
                 userRoles = roleClaim;
@@ -44,8 +44,10 @@ const Layout = () => {
                     <Link to="/">E-Commerce</Link>
                 </div>
                 <nav className='nav-links'>
-
-                    <Link to="/">Ana Sayfa</Link>
+                    <>
+                        <Link to="/">Ana Sayfa</Link>
+                        <Link to="/products">Ürünler</Link>
+                    </>
 
                     {/* yetki durumuna göre dinamik menü gösterimi */}
                     {isAuthenticated ? (
@@ -64,15 +66,24 @@ const Layout = () => {
 
                             {/* Sadece Müşteri rolüne sahip olanlar görebilir */}
                             {hasRole('Customer') && (
-                                <Link to="/my-orders">Siparişlerim</Link>
+                                <>
+                                    <Link to="/cart">Sepetim</Link>
+                                    <Link to="/my-orders">Siparişlerim</Link>
+                                </>
                             )}
+
+                            {/* Tüm roller erişebilir */}
+                            {
+                                (hasRole('Admin') || hasRole('Manager') || hasRole('Customer')) && (
+                                    <Link to="/profile">Profil</Link>
+                                )
+                            }
 
                             <button onClick={handleLogout} className='logout-btn'>Çıkış Yap</button>
                         </>
                     ) : (
                         <>
                             <Link to="/login" className='login-btn'>Giriş Yap</Link>
-                            <Link to="/register" className='login-btn'>Kayıt Ol</Link>
                         </>
                     )}
                 </nav>

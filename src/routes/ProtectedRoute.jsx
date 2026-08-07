@@ -1,5 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import { toast } from "react-toastify";
 
 
 
@@ -41,6 +42,7 @@ const ProtectedRoute = ({ allowedRoles }) => {
     if(!isTokenValid){
         localStorage.removeItem('accessToken');
         localStorage.removeItem('refreshToken');
+        toast.warn('Token çözülemedi');
         return <Navigate to="/login" replace />;
     }
 
