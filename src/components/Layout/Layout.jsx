@@ -7,6 +7,7 @@ import { FiSearch, FiChevronDown, FiTruck, FiStar } from 'react-icons/fi';
 import { useState, useEffect } from 'react';
 import api from '../../services/api'
 import { FaShoppingCart, FaUserCircle } from 'react-icons/fa';
+import Footer from '../Footer/Footer';
 
 
 const Layout = () => {
@@ -46,6 +47,9 @@ const Layout = () => {
     const isStaff = hasRole('Admin') || hasRole('Manager');
 
     const showAnnouncment = !isStaff && !isHiddenPath;
+
+    const hiddenFooterPaths = ['/login', '/register', '/reports', '/logs', '/dashboard'];
+    const isFooterHidden = hiddenFooterPaths.some(path => location.pathname.startsWith(path));
 
     const handleLogout = () => {
         //oturum sonlandırma
@@ -207,6 +211,9 @@ const Layout = () => {
             <main className={styles.mainContent}>
                 <Outlet />
             </main>
+
+            {!isFooterHidden && <Footer />}
+
             {/* Global bildirim yönetimi */}
             <ToastContainer position='bottom-right' autoClose={3000} hideProgressBar={false} />
         </div>

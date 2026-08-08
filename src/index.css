@@ -10,7 +10,7 @@
 
 /* --- 2. GLOBAL GÖVDE VE TİPOGRAFİ --- */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: sans-serif;
     background-color: #f8f9fa;
     color: #333333;
     -webkit-font-smoothing: antialiased; /* Metinlerin daha pürüzsüz ve profesyonel okunmasını sağlar */
