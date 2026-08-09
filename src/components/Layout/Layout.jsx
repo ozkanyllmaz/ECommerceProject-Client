@@ -154,7 +154,7 @@ const Layout = () => {
                                 {categories.map((category) => (
                                     <Link
                                         key={category.id}
-                                        to={`/categories=${category.id}`}
+                                        to={`/products?categoryId=${category.id}`}
                                         className={styles.dropdownItem}
                                     >
                                         {category.name}

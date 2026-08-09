@@ -8,8 +8,9 @@
 
 .heroGrid {
     display: grid;
-    grid-template-columns: 2fr  1fr;
-    grid-template-rows: repeat(2, 175px); /* 250px yüksekliğinde 2 satır */
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: repeat(2, 175px);
+    /* 250px yüksekliğinde 2 satır */
     gap: 1.5rem;
 }
 
@@ -23,20 +24,21 @@
     display: block;
 }
 
-.bannerImage{
+.bannerImage {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s ease, filter 0.4s ease;
 }
 
-.bannerItem:hover .bannerImage{
+.bannerItem:hover .bannerImage {
     transform: scale(1.1);
     filter: brightness(0.88);
 }
 
 .mainBanner {
-    grid-row: 1 / span 2; /* sol banner iki satırı da kaplar */
+    grid-row: 1 / span 2;
+    /* sol banner iki satırı da kaplar */
 }
 
 /* --- 2. ÜRÜN LİSTELEME BÖLÜMLERİ --- */
@@ -71,7 +73,7 @@
     cursor: pointer;
     color: #495057;
     transition: all 0.2s ease;
-    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 }
 
 .sliderBtn:hover {
@@ -88,7 +90,7 @@
     padding-bottom: 1rem;
     scroll-behavior: smooth;
     /* Kaydırma çubuğunu gizler ancak işlevselliği korur */
-    scrollbar-width: none; 
+    scrollbar-width: none;
     -ms-overflow-style: none;
 }
 
@@ -109,7 +111,8 @@
 .imageWrapper {
     background-color: #f8f9fa;
     border-radius: 8px;
-    aspect-ratio: 3/4; /* Dikey formattaki ürün görselleri için standart oran */
+    aspect-ratio: 3/4;
+    /* Dikey formattaki ürün görselleri için standart oran */
     overflow: hidden;
     position: relative;
     margin-bottom: 1rem;
@@ -141,7 +144,7 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    border: 1px solid rgba(0,0,0,0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .priceBlock {
@@ -152,7 +155,8 @@
 
 .oldPrice {
     font-size: 0.85rem;
-    color: #dc3545; /* İndirim vurgusu */
+    color: #dc3545;
+    /* İndirim vurgusu */
     text-decoration: line-through;
     font-weight: 500;
 }
@@ -175,3 +179,192 @@
     overflow: hidden;
 }
 
+/* --- GÜVEN VE ÖZELLİK KARTLARI (TRUST BADGES) --- */
+.featuresGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.featureCard1 {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    background-color: #EBECF2;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.featureCard2 {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    background-color: #7A80BF;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.featureCard3 {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    background-color: #81E68D;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.featureCard1:hover,
+.featureCard2:hover,
+.featureCard3:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-color: #dee2e6;
+    transform: translateY(-5px);
+}
+
+.featureIcon {
+    font-size: 2rem;
+    color: #ffffff;
+    flex-shrink: 0;
+    /* İkonun metin uzasa bile küçülmesini engeller */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.featureIcon2 {
+    font-size: 2rem;
+    color: #000000;
+    flex-shrink: 0;
+    /* İkonun metin uzasa bile küçülmesini engeller */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.featureContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.featureTitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+}
+
+.featureTitle2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #000000;
+    margin: 0;
+}
+
+.featureDesc {
+    font-size: 0.9rem;
+    color: #f2f8fe;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.featureDesc2 {
+    font-size: 0.9rem;
+    color: #000000;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Tablet ve Mobil Cihazlar İçin Duyarlı (Responsive) Tasarım */
+@media (max-width: 1024px) {
+    .featuresGrid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .featuresGrid {
+        grid-template-columns: 1fr;
+        /* Mobilde kartları alt alta dizer */
+    }
+}
+
+/* --- MARKA VE KATEGORİ KARTLARI (VERTICAL CARDS) --- */
+.brandCardsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.brandCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end; /* Butonu en alta iter */
+    aspect-ratio: 370 / 450; /* İstediğiniz 370x450 piksel oranını ekrana duyarlı şekilde kilitler */
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.brandCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.brandCardImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Görselin kartı tam kaplamasını sağlar */
+    z-index: 1;
+    transition: transform 0.5s ease;
+}
+
+.brandCard:hover .brandCardImage {
+    transform: scale(1.05); /* Hover anında hafif yakınlaşma efekti */
+}
+
+/* Kartın altındaki hap (pill) şeklindeki buton */
+.brandCardBadge {
+    position: relative;
+    z-index: 2;
+    background-color: #ffffff;
+    color: #212529;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.8rem 2.5rem;
+    border-radius: 50px; /* Hap görünümü için yüksek border-radius */
+    margin-bottom: 2rem; /* Kartın altından boşluk */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.brandCard:hover .brandCardBadge {
+    background-color: #212529;
+    color: #ffffff;
+}
+
+/* Tablet ve Mobil Cihazlar İçin Duyarlı (Responsive) Tasarım */
+@media (max-width: 992px) {
+    .brandCardsGrid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}

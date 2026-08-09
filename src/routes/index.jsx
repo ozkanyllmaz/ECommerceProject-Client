@@ -8,6 +8,7 @@ import Layout from "../components/Layout/Layout";
 import Register from "../pages/Register/Register";
 import UnAuthorized from "../pages/UnAuthorized/UnAuthorized";
 import Profile from "../pages/Profile/Profile";
+import Product from "../pages/Product/Product";
 
 export const router = createBrowserRouter([
     {
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
                     {
                         path: 'profile',
                         element: <Profile />,
+                    },
+                    {
+                        path: 'products',
+                        element: <Product />,
                     },
                 ]
             },

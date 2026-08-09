@@ -1,0 +1,241 @@
+
+
+.pageContainer {
+    display: flex;
+    gap: 2rem;
+    max-width: 1600px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    align-items: flex-start;
+    min-height: 70vh;
+}
+
+/* --- SOL BÖLÜM: FİLTRELEME PANELİ --- */
+.sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 100px; /* Kaydırma esnasında menüyü ekranda kilitler */
+}
+
+.filterGroup {
+    margin-bottom: 2rem;
+}
+
+.filterTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #212529;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f8f9fa;
+}
+
+.filterList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.radioLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: #495057;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.radioLabel:hover {
+    color: #0d6efd;
+}
+
+.priceInputs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.priceInput {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.priceInput:focus {
+    border-color: #0d6efd;
+}
+
+.filterBtn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.6rem;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.filterBtn:hover {
+    background-color: #0056b3;
+}
+
+.clearFilterBtn {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.6rem;
+    background-color: #f8f9fa;
+    color: #495057;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.clearFilterBtn:hover {
+    background-color: #e9ecef;
+}
+
+/* --- SAĞ BÖLÜM: ÜRÜN LİSTESİ --- */
+.mainContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.pageHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    background: #ffffff;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.pageTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #212529;
+    margin: 0;
+}
+
+.productCount {
+    color: #6c757d;
+    font-size: 0.95rem;
+}
+
+.productGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+
+
+/* --- 3. ÜRÜN KARTI BİLEŞENİ --- */
+.productCard {
+    min-width: 280px;
+    max-width: 280px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.imageWrapper {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    aspect-ratio: 4/5;
+    /* Dikey formattaki ürün görselleri için standart oran */
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.imageWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.colorOptions {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    gap: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #495057;
+}
+
+.colorDot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.priceBlock {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.25rem;
+}
+
+.oldPrice {
+    font-size: 0.85rem;
+    color: #dc3545;
+    /* İndirim vurgusu */
+    text-decoration: line-through;
+    font-weight: 500;
+}
+
+.currentPrice {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #212529;
+}
+
+.productTitle {
+    font-size: 0.95rem;
+    color: #495057;
+    line-height: 1.4;
+    font-weight: 500;
+    /* Uzun metinleri 2 satırla sınırlar ve sonuna 3 nokta koyar */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+/* Mobil Görünüm */
+@media (max-width: 992px) {
+    .pageContainer {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        position: static;
+    }
+}
