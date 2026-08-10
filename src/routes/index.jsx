@@ -9,6 +9,7 @@ import Register from "../pages/Register/Register";
 import UnAuthorized from "../pages/UnAuthorized/UnAuthorized";
 import Profile from "../pages/Profile/Profile";
 import Product from "../pages/Product/Product";
+import ProductDetail from "../pages/ProductDetail/ProductDetail";
 
 export const router = createBrowserRouter([
     {
@@ -28,20 +29,28 @@ export const router = createBrowserRouter([
                 element: <Login />
             },
             {
+                path: 'products',
+                element: <Product />,
+            },
+            {
+                path: 'products/detail/:id',
+                element: <ProductDetail />
+            },
+            {
                 path: 'unauthorized',
                 element: <UnAuthorized />
             },
             // Admin in erişebileceği sayfalar
             {
                 // yalnızca giriş yapmış kullanıcıların erişebileceği rotalar
-                element: <ProtectedRoute allowedRoles={['Admin']}/>,
+                element: <ProtectedRoute allowedRoles={['Admin']} />,
                 children: [
-                {
-                    path: 'dashboard',
-                    element: <Dashboard />,
-                },
-                // sepet onaylama, sipariş geçmişi vs..
-            ]
+                    {
+                        path: 'dashboard',
+                        element: <Dashboard />,
+                    },
+                    // sepet onaylama, sipariş geçmişi vs..
+                ]
             },
             // Tüm rollerin erişebileceği sayfalar
             {
@@ -50,10 +59,6 @@ export const router = createBrowserRouter([
                     {
                         path: 'profile',
                         element: <Profile />,
-                    },
-                    {
-                        path: 'products',
-                        element: <Product />,
                     },
                 ]
             },

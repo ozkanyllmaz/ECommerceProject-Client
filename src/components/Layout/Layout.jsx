@@ -1,4 +1,4 @@
-import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom'
+import { Link, Outlet, useNavigate, useLocation, ScrollRestoration } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { jwtDecode } from 'jwt-decode';
@@ -120,7 +120,9 @@ const Layout = () => {
 
                     {/* Sol bölüm: logo*/}
                     <div className={styles.logo}>
-                        <Link to="/">E-Commerce</Link>
+                        <Link to="/">
+                            <img src='src/images/logo.png'/>
+                        </Link>
                     </div>
 
                     {/* Orta bölüm : arama*/}
@@ -213,6 +215,9 @@ const Layout = () => {
             </main>
 
             {!isFooterHidden && <Footer />}
+            
+            {/* sayfada değişiklik olduğunda sayfanın en başına sar */}
+            <ScrollRestoration />
 
             {/* Global bildirim yönetimi */}
             <ToastContainer position='bottom-right' autoClose={3000} hideProgressBar={false} />

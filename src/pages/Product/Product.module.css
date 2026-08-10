@@ -54,7 +54,7 @@
 }
 
 .radioLabel:hover {
-    color: #0d6efd;
+    color: #d00715;
 }
 
 .priceInputs {
@@ -81,7 +81,7 @@
     width: 100%;
     margin-top: 1rem;
     padding: 0.6rem;
-    background-color: #0d6efd;
+    background-color: #c31420;
     color: white;
     border: none;
     border-radius: 4px;
@@ -91,7 +91,7 @@
 }
 
 .filterBtn:hover {
-    background-color: #0056b3;
+    background-color: #d00715;
 }
 
 .clearFilterBtn {

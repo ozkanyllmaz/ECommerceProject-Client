@@ -197,7 +197,7 @@ const Products = () => {
                     <div className={styles.productGrid}>
                         {products.length > 0 ? (
                             products.map((product) => (
-                                <Link to={`/product/${product.id}`} key={`pop-${product.id}`} className={styles.productCard}>
+                                <Link to={`/products/detail/${product.id}`} key={`pop-${product.id}`} className={styles.productCard}>
                                     <div className={styles.imageWrapper}>
                                         <img src={product.image || 'https://img.magnific.com/free-photo/global-environmental-sustainability-background-green-technology_53876-124629.jpg?semt=ais_test_b&w=740&q=80'} alt={product.name} />
                                     </div>

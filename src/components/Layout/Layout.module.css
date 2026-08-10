@@ -9,7 +9,8 @@
     padding: 0.5rem 0;
     width: 100%;
     position: relative;
-    z-index: 1001; /* Navbar'ın üzerinde kalmasını garantiler */
+    z-index: 1001;
+    /* Navbar'ın üzerinde kalmasını garantiler */
     display: flex;
 }
 
@@ -17,7 +18,7 @@
     display: flex;
     width: fit-content;
     /* Animasyon süresini metin uzunluğuna göre artırıp azaltabilirsiniz */
-    animation: marqueeScroll 25s linear infinite; 
+    animation: marqueeScroll 25s linear infinite;
 }
 
 /* Kullanıcı okumak için fareyi üzerine getirdiğinde kaymayı durdurur */
@@ -29,15 +30,21 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0 3rem; /* Metinler arası boşluk */
+    padding: 0 3rem;
+    /* Metinler arası boşluk */
     font-size: 0.85rem;
     font-weight: 600;
 }
 
 /* Kesintisiz döngü için kapsayıcının tam yarısına kadar kaydırma işlemi */
 @keyframes marqueeScroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 
@@ -64,23 +71,37 @@
     max-width: 1400px;
     margin: 0 auto;
     width: 100%;
-    gap: 2rem; /* Elemanlar arası varsayılan boşluk */
+    gap: 2rem;
+    /* Elemanlar arası varsayılan boşluk */
 }
 
 /* --- 1. SOL BÖLÜM: LOGO --- */
 .logo a {
+    display: inline-block;
     font-size: 1.75rem;
-    font-weight: 800;
-    color: var(--primary-blue, #0d6efd);
+    font-weight: 100;
+    color: #000;
     text-decoration: none;
     letter-spacing: -0.5px;
-    white-space: nowrap; /* Logonun alt satıra inmesini engeller */
+    white-space: nowrap;
+    /* Logonun alt satıra inmesini engeller */
+}
+
+.logo img {
+    width: 220px;
+    /* Logonun genişliğini buradan ayarlayabilirsin (10px çok küçük olur) */
+    height: auto;
+    /* Logonun en-boy oranının bozulmasını engeller */
+    display: block;
+    /* Alt kısımdaki boşlukları (hayalet boşluk) temizler */
 }
 
 /* --- 2. ORTA BÖLÜM: ARAMA ÇUBUĞU --- */
 .searchContainer {
-    flex: 1; /* Mevcut boş alanı olabildiğince kaplar */
-    max-width: 600px; /* Çok fazla uzamasını engeller */
+    flex: 1;
+    /* Mevcut boş alanı olabildiğince kaplar */
+    max-width: 600px;
+    /* Çok fazla uzamasını engeller */
 }
 
 .searchForm {
@@ -141,12 +162,13 @@
 }
 
 .navLink:hover {
-    color: var(--primary-blue, #0d6efd);
+    color: #e3000f;
 }
 
 /* --- DROPDOWN (AÇILIR MENÜ) MİMARİSİ --- */
 .dropdown {
-    position: relative; /* İçerisindeki mutlak konumlandırılmış menüyü sınırlar */
+    position: relative;
+    /* İçerisindeki mutlak konumlandırılmış menüyü sınırlar */
     display: inline-block;
 }
 
@@ -162,6 +184,10 @@
     gap: 0.25rem;
 }
 
+.dropdownToggle:hover {
+    color: #e3000f;
+}
+
 /* Fare ile üzerine gelindiğinde menüyü görünür yapar */
 .dropdown:hover .dropdownMenu {
     display: flex;
@@ -172,7 +198,8 @@
 
 .dropdownMenu {
     position: absolute;
-    top: 100%; /* Toggle elementinin hemen altından başlar */
+    top: 100%;
+    /* Toggle elementinin hemen altından başlar */
     left: 0;
     background-color: #ffffff;
     min-width: 200px;
@@ -183,7 +210,7 @@
     flex-direction: column;
     padding: 0.5rem 0;
     z-index: 1001;
-    
+
     /* Animasyonlu açılış için başlangıç değerleri */
     opacity: 0;
     visibility: hidden;
@@ -201,7 +228,7 @@
 
 .dropdownItem:hover {
     background-color: #f8f9fa;
-    color: var(--primary-blue, #0d6efd);
+    color: #e3000f;
 }
 
 
