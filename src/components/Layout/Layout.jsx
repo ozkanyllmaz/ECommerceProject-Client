@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import api from '../../services/api'
 import { FaShoppingCart, FaUserCircle } from 'react-icons/fa';
 import Footer from '../Footer/Footer';
+import CartSideBar from '../CartSideBar/CartSideBar';
 
 
 const Layout = () => {
@@ -15,6 +16,8 @@ const Layout = () => {
     const location = useLocation(); // mevcut url yolunu almak için
     const [searchQuery, setSearchQuery] = useState('');
     const [categories, setCategories] = useState([]);
+
+    const [isCartOpen, setIsCartOpen] = useState(false);
 
     const token = localStorage.getItem('accessToken');
     const isAuthenticated = Boolean(localStorage.getItem('accessToken'));
@@ -55,7 +58,7 @@ const Layout = () => {
         //oturum sonlandırma
         localStorage.removeItem('accessToken');
         toast.info('Oturum başarıyla sonlandı');
-        navigate('/login');
+        navigate('/');
     };
 
     const handleSearchSubmit = (e) => {
@@ -121,7 +124,7 @@ const Layout = () => {
                     {/* Sol bölüm: logo*/}
                     <div className={styles.logo}>
                         <Link to="/">
-                            <img src='src/images/logo.png'/>
+                            <img src='src/images/logo.png' />
                         </Link>
                     </div>
 
@@ -181,12 +184,12 @@ const Layout = () => {
                                 )}
 
                                 {/* Sadece Müşteri rolüne sahip olanlar görebilir */}
-                                {hasRole('Customer') && (
+                                {(hasRole('Customer')) && (
                                     <>
-                                    <Link to="/my-orders" className={styles.navLink}>Siparişlerim</Link>
-                                        <Link to="/cart" className={styles.navLink}>
-                                            <FaShoppingCart size={22}/>
-                                        </Link>
+                                        <Link to="/my-orders" className={styles.navLink}>Siparişlerim</Link>
+                                        <span onClick={() => setIsCartOpen(true)} className={styles.navLink} style={{ cursor: 'pointer' }}>
+                                            <FaShoppingCart size={22} />
+                                        </span>
                                     </>
                                 )}
 
@@ -203,6 +206,9 @@ const Layout = () => {
                             </>
                         ) : (
                             <>
+                                <span onClick={() => setIsCartOpen(true)} className={styles.navLink} style={{ cursor: 'pointer' }}>
+                                    <FaShoppingCart size={22} />
+                                </span>
                                 <Link to="/login" className={styles.loginBtn}>Giriş Yap</Link>
                             </>
                         )}
@@ -215,13 +221,16 @@ const Layout = () => {
             </main>
 
             {!isFooterHidden && <Footer />}
-            
+
             {/* sayfada değişiklik olduğunda sayfanın en başına sar */}
             <ScrollRestoration />
+
+            <CartSideBar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
 
             {/* Global bildirim yönetimi */}
             <ToastContainer position='bottom-right' autoClose={3000} hideProgressBar={false} />
         </div>
+
     )
 }
 
