@@ -3,13 +3,16 @@ import styles from './CartSideBar.module.css'
 import api from '../../services/api';
 import { FiShoppingCart, FiTrash2, FiX } from 'react-icons/fi';
 import { toast } from 'react-toastify';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const CartSideBar = ({ isOpen, onClose }) => {
 
     const [cartItems, setCartItems] = useState([]);
     const [cartTotal, setCartTotal] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
+    const location = useLocation();
 
+    const navigate = useNavigate();
 
     const fetchCartData = useCallback(async () => {
         await Promise.resolve();
@@ -66,6 +69,9 @@ const CartSideBar = ({ isOpen, onClose }) => {
                 if (response.data && response.data.isSuccessfull) {
                     toast.success('Ürün sepetten silindi');
                     fetchCartData();
+                    if(location.pathname.startsWith('/checkout')){
+                        window.location.reload();
+                    }
                 }
             } catch (error) {
                 console.error("Ürün sepetten silinirken bir hata oluştu: ", error);
@@ -78,6 +84,11 @@ const CartSideBar = ({ isOpen, onClose }) => {
             const newTotal = updatedCart.reduce((total, i) => total + (i.productPrice * i.quantity), 0);
             setCartTotal(newTotal);
         }
+    }
+
+    const handleGoToCheckout = () => {
+        navigate('/checkout');
+        onClose();
     }
 
     const handleContinueShopping = () => {
@@ -172,7 +183,7 @@ const CartSideBar = ({ isOpen, onClose }) => {
                         </div>
 
                         <div className={styles.btnGroup}>
-                            <button className={styles.primaryBtn}>
+                            <button onClick={handleGoToCheckout} className={styles.primaryBtn}>
                                 SATIN AL
                             </button>
                             <button className={styles.secondaryBtn} onClick={handleContinueShopping}>

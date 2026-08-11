@@ -10,6 +10,7 @@ import UnAuthorized from "../pages/UnAuthorized/UnAuthorized";
 import Profile from "../pages/Profile/Profile";
 import Product from "../pages/Product/Product";
 import ProductDetail from "../pages/ProductDetail/ProductDetail";
+import Checkout from "../pages/Checkout/Checkout";
 
 export const router = createBrowserRouter([
     {
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
                     {
                         path: 'profile',
                         element: <Profile />,
+                    },
+                    {
+                        path: '/checkout',
+                        element: <Checkout />
                     },
                 ]
             },
