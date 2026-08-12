@@ -95,7 +95,7 @@ const Checkout = () => {
             if (response.data && response.data.isSuccessfull) {
                 toast.success('Siparişiniz başarıyla oluşturuldu.');
                 // şimdilik anasayfaya atıyoruz sonra orderNumber ekleriz.
-                navigate('/');
+                navigate(`/order-success/${response.data.data || ''}`);
             } else {
                 toast.error('Sipariş oluşturulamadı. Lütfen bilgilerinizi kontrol edin.');
             }

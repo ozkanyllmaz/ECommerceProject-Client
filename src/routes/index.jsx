@@ -11,6 +11,9 @@ import Profile from "../pages/Profile/Profile";
 import Product from "../pages/Product/Product";
 import ProductDetail from "../pages/ProductDetail/ProductDetail";
 import Checkout from "../pages/Checkout/Checkout";
+import OrderSuccess from "../pages/OrderSuccess/OrderSuccess";
+import MyOrders from "../pages/MyOrders/MyOrders";
+import OrderDetail from "../pages/OrderDetail/OrderDetail";
 
 export const router = createBrowserRouter([
     {
@@ -64,6 +67,18 @@ export const router = createBrowserRouter([
                     {
                         path: '/checkout',
                         element: <Checkout />
+                    },
+                    {
+                        path: '/order-success/:ordernumber',
+                        element: <OrderSuccess />
+                    },
+                    {
+                        path: '/my-orders',
+                        element: <MyOrders />
+                    },
+                    {
+                        path: '/my-orders/:id',
+                        element: <OrderDetail />
                     },
                 ]
             },

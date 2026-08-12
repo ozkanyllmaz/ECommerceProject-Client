@@ -1,0 +1,103 @@
+.successContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: 2rem;
+    text-align: center;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.iconWrapper {
+    width: 80px;
+    height: 80px;
+    background-color: #e8f5e9;
+    color: #4caf50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.message {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 2rem;
+    max-width: 500px;
+}
+
+.orderNumberBox {
+    background-color: #f8f9fa;
+    border: 1px dashed #ccc;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    margin-bottom: 2.5rem;
+}
+
+.orderNumberLabel {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.orderNumber {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000;
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 1rem;
+}
+
+.primaryBtn, .secondaryBtn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.primaryBtn {
+    background-color: #e3000f;
+    color: white;
+    border: none;
+}
+
+.primaryBtn:hover {
+    background-color: #cc000d;
+}
+
+.secondaryBtn {
+    background-color: white;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+.secondaryBtn:hover {
+    background-color: #f8f9fa;
+}
+
+@media (max-width: 480px) {
+    .buttonGroup {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .primaryBtn, .secondaryBtn {
+        width: 100%;
+    }
+}

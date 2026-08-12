@@ -1,0 +1,145 @@
+.ordersContainer {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+    font-family: system-ui, -apple-system, sans-serif;
+    min-height: 60vh;
+}
+
+.pageTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #000;
+}
+
+.tableWrapper {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    overflow-x: auto;
+}
+
+.ordersTable {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.ordersTable th {
+    background-color: #eee;
+    color: #010101;
+    font-weight: 1200;
+    padding: 1rem 1.5rem;
+    border-bottom: 2px solid #eee;
+}
+
+.ordersTable td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #eee;
+    color: #555;
+    vertical-align: middle;
+}
+
+.ordersTable tr:last-child td {
+    border-bottom: none;
+}
+
+.ordersTable tr:hover {
+    background-color: #fafafa;
+}
+
+.orderNumber {
+    font-weight: 600;
+    color: #000;
+}
+
+.totalAmount {
+    font-weight: 700;
+    color: #000;
+}
+
+/* Durum Rozetleri (Badges) */
+.statusBadge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* Boş Durum Tasarımı */
+.emptyState {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.emptyState p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.primaryBtn {
+    background-color: #e3000f;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.primaryBtn:hover {
+    opacity: 0.9;
+}
+
+/* --- SAYFALAMA (PAGINATION) TASARIMI --- */
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-top: 1px solid #eee;
+    background-color: #fff;
+}
+
+.pageNumbers {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.pageBtn {
+    padding: 0.5rem 1rem;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.pageBtn:hover:not(:disabled) {
+    background-color: #e3000f;
+    color: white;
+    border-color: #e3000f;
+}
+
+.pageBtn:disabled {
+    background-color: #f5f5f5;
+    color: #bbb;
+    cursor: not-allowed;
+    border-color: #eee;
+}
+
+/* Aktif (Bulunulan) Sayfa Butonu */
+.activePage {
+    background-color: #e3000f;
+    color: white;
+    border-color: #e3000f;
+    pointer-events: none; /* Aktif sayfaya tekrar tıklanmasını engeller */
+}

@@ -1,0 +1,194 @@
+/* Genel Kapsayıcı ve Yazı Tipi Sabitleme */
+.detailContainer {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+    /* Font ailesini kesin olarak sans-serif yapıyoruz */
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+    color: #333;
+}
+
+/* --- ÜST KISIM (BAŞLIK, BİLGİLER VE BUTON) --- */
+.topContainer {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Alt kısımla aynı kolon oranları */
+    gap: 2rem;
+    align-items: start;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 1.5rem;
+}
+
+.topLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.pageTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+}
+
+.infoRow {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.topRight {
+    display: flex;
+    justify-content: flex-start; /* Butonu sağ kolonun soluna hizalar */
+    padding-top: 0.2rem;
+}
+
+.backBtn {
+    padding: 0.6rem 1.2rem;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.backBtn:hover {
+    background-color: #f8f9fa;
+    border-color: #999;
+}
+
+
+.backBtn {
+    padding: 0.6rem 1.2rem;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    white-space: nowrap; /* Buton metninin kırılmasını engeller */
+}
+
+.backBtn:hover {
+    background-color: #f8f9fa;
+    border-color: #999;
+}
+
+
+
+.statusBadge {
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Grid Düzeni (Sol ve Sağ Kolon) */
+.grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.sectionCard {
+    background: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+}
+
+.sectionTitle {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+/* Ürünler Tablosu */
+.itemsTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.itemsTable th {
+    text-align: left;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 2px solid #eee;
+}
+
+.itemsTable td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    color: #555;
+    vertical-align: middle;
+}
+
+.productName {
+    font-weight: 600;
+    color: #000;
+}
+
+/* Adres ve Özet Kısımları */
+.addressBlock {
+    margin-bottom: 1.5rem;
+}
+
+.addressTitle {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.addressText {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.summaryItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* --- GENEL TOPLAM DÜZENLEMESİ --- */
+.totalRow {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #e3000f; /* Kırmızı renk */
+    border-top: 2px solid #eee;
+    padding-top: 1rem;
+    margin-top: 1rem;
+    text-align: center; /* Tek satırda ortalı görünüm */
+}
+
+
+.totalRow span {
+    white-space: nowrap; /* Metnin alt satıra düşmesini (wrap) kesin olarak engeller */
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

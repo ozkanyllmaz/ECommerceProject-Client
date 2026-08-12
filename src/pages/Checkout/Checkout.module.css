@@ -102,16 +102,19 @@
     background-color: #e3000f;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 1.1rem;
     font-weight: 700;
     cursor: pointer;
     margin-top: 2rem;
-    transition: opacity 0.2s;
+    transition: opacity 0.2s, transform 0.4s ease;
 }
 
 .submitBtn:hover:not(:disabled) {
     opacity: 0.9;
+    background-color: #FF1A1A;
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.20);
 }
 
 .submitBtn:disabled {
