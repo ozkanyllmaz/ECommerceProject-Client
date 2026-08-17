@@ -1,0 +1,122 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050;
+}
+
+.modalContent {
+    background-color: #fff;
+    width: 100%;
+    max-width: 800px; /* Detaylar için daha geniş */
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.modalHeader h2 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: #333;
+}
+
+.closeBtn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #999;
+    cursor: pointer;
+}
+
+.closeBtn:hover {
+    color: #e3000f;
+}
+
+.modalBody {
+    padding: 1.5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Bölüm Başlıkları */
+.sectionTitle {
+    font-size: 1.1rem;
+    color: #007bff;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+/* Adres Grid Yapısı */
+.addressGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.addressCard {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+}
+
+.addressCard h4 {
+    margin: 0 0 0.8rem 0;
+    color: #495057;
+    font-size: 0.95rem;
+}
+
+.addressCard p {
+    margin: 0 0 0.4rem 0;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+/* Ürünler Tablosu */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    color: #495057;
+    text-align: left;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.totalRow td {
+    font-weight: 700;
+    font-size: 1rem;
+    border-top: 2px solid #dee2e6;
+    color: #e3000f;
+}

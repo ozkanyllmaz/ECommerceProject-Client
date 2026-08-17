@@ -1,0 +1,146 @@
+.container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 2rem;
+    font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+.header {
+    margin-bottom: 2rem;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 1.5rem 0;
+}
+
+/* Sekmeler (Tabs) */
+.tabs {
+    display: flex;
+    border-bottom: 2px solid #eee;
+    gap: 1rem;
+}
+
+.tabBtn {
+    background: none;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+}
+
+.tabBtn:hover {
+    color: #007bff;
+}
+
+.activeTab {
+    color: #007bff;
+    border-bottom-color: #007bff;
+}
+
+/* Tablo Stilleri */
+.tableWrapper {
+    overflow-x: auto;
+    margin-top: 1.5rem;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    color: #495057;
+    font-weight: 600;
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.table td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    color: #333;
+    vertical-align: middle;
+}
+
+.table tr:hover {
+    background-color: #f8f9fa;
+}
+
+.orderNumber {
+    font-weight: 600;
+    color: #000;
+}
+
+.statusBadge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* Aksiyon Butonları */
+.actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.actionBtn {
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    color: white;
+}
+
+.viewBtn { background-color: #6c757d; }
+.viewBtn:hover { background-color: #5a6268; }
+
+.approveBtn { background-color: #28a745; }
+.approveBtn:hover { background-color: #218838; }
+
+.rejectBtn { background-color: #dc3545; }
+.rejectBtn:hover { background-color: #c82333; }
+
+/* Sayfalama */
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.pageNumbers {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.pageBtn {
+    padding: 0.4rem 0.8rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    color: #e3000f;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.pageBtn:hover:not(:disabled) { background-color: #e9ecef; }
+.pageBtn:disabled { color: #6c757d; cursor: not-allowed; background-color: #f8f9fa; }
+.activePage { background-color: #e3000f; color: white; border-color: #e3000f; pointer-events: none; }

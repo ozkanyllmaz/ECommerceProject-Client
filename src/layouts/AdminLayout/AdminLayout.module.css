@@ -1,0 +1,100 @@
+.adminContainer {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f6f9; /* Paneller için standart hafif gri arka plan */
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* --- SOL MENÜ (SIDEBAR) --- */
+.sidebar {
+    width: 260px;
+    background-color: #343a40; /* Koyu tema */
+    color: #c2c7d0;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    transition: all 0.3s;
+}
+
+.sidebarHeader {
+    padding: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    border-bottom: 1px solid #4f5962;
+    letter-spacing: 1px;
+}
+
+.navList {
+    list-style: none;
+    padding: 1rem 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.navItem {
+    padding: 0 1rem;
+}
+
+.navLink {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    color: #c2c7d0;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.navLink:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: #fff;
+}
+
+/* React Router'ın .active class'ı ile eşleşecek */
+.activeLink {
+    background-color: #e3000f; /* Temanızın ana rengi */
+    color: #fff;
+}
+
+/* --- SAĞ İÇERİK ALANI --- */
+.mainContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.topbar {
+    background-color: #fff;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 2rem;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+}
+
+.logoutBtn {
+    background: none;
+    border: none;
+    color: #666;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.logoutBtn:hover {
+    color: #e3000f;
+}
+
+.contentWrapper {
+    padding: 2rem;
+    overflow-y: auto;
+    flex: 1;
+}

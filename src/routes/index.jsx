@@ -1,8 +1,7 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import NotFound from "../pages/NotFound/NotFound";
-import Dashboard from "../pages/Dashboard/Dashboard";
 import ProtectedRoute from "./ProtectedRoute";
 import Layout from "../components/Layout/Layout";
 import Register from "../pages/Register/Register";
@@ -14,6 +13,12 @@ import Checkout from "../pages/Checkout/Checkout";
 import OrderSuccess from "../pages/OrderSuccess/OrderSuccess";
 import MyOrders from "../pages/MyOrders/MyOrders";
 import OrderDetail from "../pages/OrderDetail/OrderDetail";
+import AdminDashboard from "../pages/Manager/Dashboard/AdminDashboard";
+import AdminLayout from "../layouts/AdminLayout/AdminLayout";
+import CategoryManagement from "../pages/Manager/CategoryManagement/CategoryManagement";
+import ProductManagement from "../pages/Manager/ProductManagement/ProductManagement";
+import OrderManagement from "../pages/Manager/OrderManagement/OrderManagement";
+import UserManagement from "../pages/Manager/UserManagement/UserManagement";
 
 export const router = createBrowserRouter([
     {
@@ -44,18 +49,7 @@ export const router = createBrowserRouter([
                 path: 'unauthorized',
                 element: <UnAuthorized />
             },
-            // Admin in erişebileceği sayfalar
-            {
-                // yalnızca giriş yapmış kullanıcıların erişebileceği rotalar
-                element: <ProtectedRoute allowedRoles={['Admin']} />,
-                children: [
-                    {
-                        path: 'dashboard',
-                        element: <Dashboard />,
-                    },
-                    // sepet onaylama, sipariş geçmişi vs..
-                ]
-            },
+
             // Tüm rollerin erişebileceği sayfalar
             {
                 element: <ProtectedRoute allowedRoles={['Admin', 'Manager', 'Customer']} />,
@@ -83,6 +77,54 @@ export const router = createBrowserRouter([
                 ]
             },
         ],
+    },
+    {
+        // Manager erişebileceği sayfalar
+
+        // yalnızca giriş yapmış yöneticilerin erişebileceği rotalar
+        element: <ProtectedRoute allowedRoles={['Manager', 'Admin']} />,
+        children: [
+            {
+                path: 'management',
+                element: <AdminLayout />,
+                children: [
+                    {
+                        index: true,
+                        element: <Navigate to="dashboard" replace />
+                    },
+                    {
+                        path: 'dashboard', // Kullanıcı sadece "/management" yazarsa varsayılan olarak bu sayfa açılır
+                        element: <AdminDashboard />
+                    },
+                    {
+                        path: 'orders',
+                        element: <OrderManagement />
+                    },
+                    {
+                        element: <ProtectedRoute allowedRoles={['Manager']} />,
+                        children: [
+                            {
+                                path: 'categories',
+                                element: <CategoryManagement />
+                            },
+                            {
+                                path: 'products',
+                                element: <ProductManagement />
+                            },
+                        ]
+                    },
+                    {
+                        element: <ProtectedRoute allowedRoles={['Admin']} />,
+                        children: [
+                            {
+                                path: 'users',
+                                element: <UserManagement />
+                            }
+                        ]
+                    },
+                ]
+            },
+        ]
     },
     {
         path: '*',

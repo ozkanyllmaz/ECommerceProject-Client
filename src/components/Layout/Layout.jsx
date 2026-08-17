@@ -72,7 +72,6 @@ const Layout = () => {
         const fetchCategories = async () => {
             try {
                 const response = await api.get('/Categories/ListCategory?paginationParameter.PageNumber=1&paginationParameter.PageSize=10');
-                console.log("Kategori yaniti: ", response.data.data.data);
                 const data = response.data.data.data;
 
                 if (data) {
@@ -178,9 +177,9 @@ const Layout = () => {
                                     </>
                                 )}
 
-                                {/* Sadece Yönetici veya Yönetici Yardımcısı rolüne sahip olanlar görebilir */}
+                                {/* Sadece Yönetici rolüne sahip olanlar görebilir */}
                                 {(hasRole('Admin') || hasRole('Manager')) && (
-                                    <Link to="/dashboard" className={styles.navLink}>Yönetim Paneli</Link>
+                                    <Link to="/management" className={styles.navLink}>Yönetim Paneli</Link>
                                 )}
 
                                 {/* Sadece Müşteri rolüne sahip olanlar görebilir */}

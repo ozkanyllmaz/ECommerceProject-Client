@@ -84,21 +84,21 @@
 }
 
 .authLinks a {
-    color: #0056b3;
+    color: #c31515;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.2s ease-in-out;
 }
 
 .authLinks a:hover {
-    color: #003d82;
+    color: #ff0000;
     text-decoration: underline;
 }
 
 .submitBtn {
     width: 100%;
     padding: 0.75rem;
-    background-color: #0d6efd;
+    background-color: #252628;
     color: white;
     border: none;
     border-radius: 4px;
@@ -110,7 +110,7 @@
 }
 
 .submitBtn:hover:not(:disabled) {
-    background-color: #3b77a8;
+    background-color: #000000;
 }
 
 .submitBtn:disabled {
