@@ -19,6 +19,7 @@ import CategoryManagement from "../pages/Manager/CategoryManagement/CategoryMana
 import ProductManagement from "../pages/Manager/ProductManagement/ProductManagement";
 import OrderManagement from "../pages/Manager/OrderManagement/OrderManagement";
 import UserManagement from "../pages/Manager/UserManagement/UserManagement";
+import LogManagement from "../pages/Manager/LogManagement/LogManagement";
 
 export const router = createBrowserRouter([
     {
@@ -79,7 +80,6 @@ export const router = createBrowserRouter([
         ],
     },
     {
-        // Manager erişebileceği sayfalar
 
         // yalnızca giriş yapmış yöneticilerin erişebileceği rotalar
         element: <ProtectedRoute allowedRoles={['Manager', 'Admin']} />,
@@ -119,6 +119,10 @@ export const router = createBrowserRouter([
                             {
                                 path: 'users',
                                 element: <UserManagement />
+                            },
+                            {
+                                path: 'logs',
+                                element: <LogManagement />
                             }
                         ]
                     },
