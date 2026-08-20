@@ -71,7 +71,7 @@ const Layout = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await api.get('/Categories/ListCategory?paginationParameter.PageNumber=1&paginationParameter.PageSize=10');
+                const response = await api.get('/Categories/ListCategory?paginationParameter.PageNumber=1&paginationParameter.PageSize=20');
                 const data = response.data.data.data;
 
                 if (data) {

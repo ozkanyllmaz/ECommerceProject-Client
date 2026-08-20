@@ -291,6 +291,7 @@
     /* Kaydırma çubuğunu gizler ancak işlevselliği korur */
     scrollbar-width: none;
     -ms-overflow-style: none;
+    margin-bottom: 5rem;
 }
 
 .productRow::-webkit-scrollbar {
@@ -310,18 +311,23 @@
 .imageWrapper {
     background-color: #f8f9fa;
     border-radius: 8px;
-    aspect-ratio: 3/4;
+    aspect-ratio: 1/1;
     /* Dikey formattaki ürün görselleri için standart oran */
     overflow: hidden;
     position: relative;
     margin-bottom: 1rem;
+    transition: transform 0.2s ease;
 }
 
 .imageWrapper img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: opacity 0.3s ease;
+}
+
+.imageWrapper:hover{
+    transform: scale(1.05);
 }
 
 .colorOptions {

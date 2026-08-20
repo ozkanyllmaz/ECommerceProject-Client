@@ -11,6 +11,8 @@ const ProductManagement = () => {
     // Sayfalama State'leri
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
+    const [categories, setCategories] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState("");
     const [totalPages, setTotalPages] = useState(1);
     const [hasNextPage, setHasNextPage] = useState(false);
     const [hasPreviousPage, setHasPreviousPage] = useState(false);
@@ -21,11 +23,30 @@ const ProductManagement = () => {
     const [refreshTrigger, setRefreshTrigger] = useState(0);
 
     useEffect(() => {
+        const fetchCategories = async () => {
+            setIsLoading(true);
+            try {
+                const response = await api.get('/Categories/ListCategory?paginationParameter.PageNumber=1&paginationParameter.PageSize=15');
+                if (response.data && response.data.isSuccessfull) {
+                    setCategories(response.data.data.data);
+                }
+            } catch (error) {
+                console.error("Kategoriler çekilirken hata:", error);
+                toast.error("Kategoriler yüklenemedi.");
+            }
+        }
+        fetchCategories();
+    }, [])
+
+    useEffect(() => {
         const fetchProducts = async () => {
             setIsLoading(true);
             try {
+                const url = selectedCategory
+                    ? `/Products/GetProductsByCategory?CategoryId=${selectedCategory}&paginationParameter.PageNumber=${currentPage}&paginationParameter.PageSize=${pageSize}`
+                    : `/Products/GetAllProduct?paginationParameter.PageNumber=${currentPage}&paginationParameter.PageSize=${pageSize}`
 
-                const response = await api.get(`/Products/GetAllProduct?paginationParameter.PageNumber=${currentPage}&paginationParameter.PageSize=${pageSize}`);
+                const response = await api.get(url);
 
                 if (response.data && response.data.isSuccessfull) {
                     const paginationData = response.data.data;
@@ -46,7 +67,12 @@ const ProductManagement = () => {
         };
 
         fetchProducts();
-    }, [currentPage, pageSize, refreshTrigger]);
+    }, [currentPage, pageSize, refreshTrigger, selectedCategory]);
+
+    const handleCategoryChange = (e) => {
+        setSelectedCategory(e.target.value);
+        setCurrentPage(1);
+    }
 
     // Sayfa Değiştirme Fonksiyonları
     const handleNextPage = () => { if (hasNextPage) setCurrentPage(prev => prev + 1); };
@@ -87,9 +113,26 @@ const ProductManagement = () => {
         <div className={styles.container}>
             <div className={styles.header}>
                 <h1 className={styles.title}>Ürün Yönetimi</h1>
-                <button className={styles.addBtn} onClick={handleAddProduct}>
-                    + Yeni Ürün Ekle
-                </button>
+
+                <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+                    <select
+                        value={selectedCategory}
+                        onChange={handleCategoryChange}
+                        className={styles.categoryDropdown}
+                        style={{ padding: '8px 12px', borderRadius: '6px', border: '1px solid #ccc' }}
+                    >
+                        <option value="">Tüm Kategoriler</option>
+                        {categories.map((cat) => (
+                            <option key={cat.id} value={cat.id}>
+                                {cat.name}
+                            </option>
+                        ))}
+                    </select>
+
+                    <button className={styles.addBtn} onClick={handleAddProduct}>
+                        + Yeni Ürün Ekle
+                    </button>
+                </div>
             </div>
 
             <div className={styles.tableWrapper}>

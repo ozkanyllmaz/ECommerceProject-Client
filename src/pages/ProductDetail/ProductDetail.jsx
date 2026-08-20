@@ -131,6 +131,13 @@ const ProductDetail = () => {
         return null; // useEffect içindeki navigate devreye girecektir.
     }
 
+    const scroll = (ref, direction) => {
+        if (ref.current) {
+            const scrollAmount = direction === 'left' ? -300 : 300;
+            ref.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+    }
+
 
     const inStock = product.stock > 0;
 
@@ -273,12 +280,12 @@ const ProductDetail = () => {
                         similarProducts.map((product) => (
                             <Link to={`/products/detail/${product.id}`} key={`pop-${product.id}`} className={styles.productCard}>
                                 <div className={styles.imageWrapper}>
-                                    <img src={product.image || 'https://img.magnific.com/free-photo/global-environmental-sustainability-background-green-technology_53876-124629.jpg?semt=ais_test_b&w=740&q=80'} alt={product.name} />
+                                    <img src={product.imageUrl || 'https://img.magnific.com/free-photo/global-environmental-sustainability-background-green-technology_53876-124629.jpg?semt=ais_test_b&w=740&q=80'} alt={product.name} />
                                 </div>
                                 <div className={styles.priceBlock}>
                                     <span className={styles.oldPrice}>₺{(product.price + (product.price > 10000 ? 1499 : 379))?.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}</span>
                                     <span className={styles.currentPrice}>
-                                        ₺{product.price}
+                                        ₺{product.price?.toLocaleString('tr-TR', { minimumFractionDigits: 2})}
                                     </span>
                                 </div>
                                 <h3 className={styles.productTitle}>{product.name}</h3>

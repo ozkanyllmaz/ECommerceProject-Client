@@ -1,0 +1,87 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Navbar ve Footer arasında tam ortalanması için min-height ayarı */
+    min-height: 65vh; 
+    padding: 2rem;
+    text-align: center;
+    background-color: #f8f9fa;
+}
+
+.content {
+    max-width: 550px;
+    padding: 2rem;
+}
+
+.errorCode {
+    font-size: 8rem;
+    font-weight: 900;
+    color: #e3000f; /* Projenin ana kırmızısı */
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -2px;
+    text-shadow: 4px 8px 15px rgba(227, 0, 15, 0.15); /* Hafif modern bir gölge */
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #212529;
+    margin: 1rem 0;
+}
+
+.description {
+    font-size: 1.1rem;
+    color: #6c757d;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+}
+
+.actionButtons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap; /* Mobilde alt alta geçmesi için */
+}
+
+.backButton, .homeButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+/* Geri Dön Butonu (İkincil / Beyaz) */
+.backButton {
+    background-color: #ffffff;
+    color: #495057;
+    border: 1px solid #ced4da;
+}
+
+.backButton:hover {
+    background-color: #e9ecef;
+    color: #212529;
+}
+
+/* Anasayfaya Git Butonu (Birincil / Kırmızı) */
+.homeButton {
+    background-color: #e3000f;
+    color: #ffffff;
+    border: 1px solid #e3000f;
+    box-shadow: 0 4px 10px rgba(227, 0, 15, 0.2);
+}
+
+.homeButton:hover {
+    background-color: #c9000d;
+    box-shadow: 0 6px 15px rgba(227, 0, 15, 0.3);
+    transform: translateY(-2px); /* Hover anında hafif yukarı kalkma efekti */
+}

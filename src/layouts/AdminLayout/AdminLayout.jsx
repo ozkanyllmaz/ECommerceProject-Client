@@ -70,6 +70,9 @@ const AdminLayout = () => {
                                     Kategori Yönetimi
                                 </NavLink>
                             </li>
+                            <li className={styles.navItem}>
+                                <NavLink className={({ isActive }) => isActive ? `${styles.navLink}` : styles.navLink} onClick={handleLogout} >Çıkış Yap</NavLink>
+                            </li>
                         </>
                     )}
 
@@ -87,9 +90,7 @@ const AdminLayout = () => {
                                 </NavLink>
                             </li>
                             <li className={styles.navItem}>
-                                <NavLink to="/management/reports" className={({ isActive }) => isActive ? `${styles.navLink} ${styles.activeLink}` : styles.navLink}>
-                                    Raporlar
-                                </NavLink>
+                                <NavLink className={({ isActive }) => isActive ? `${styles.navLink}` : styles.navLink} onClick={handleLogout} >Çıkış Yap</NavLink>
                             </li>
                         </>
                     )}
@@ -98,10 +99,7 @@ const AdminLayout = () => {
 
             {/* SAĞ İÇERİK */}
             <main className={styles.mainContent}>
-                {/* Üst Bar */}
-                <header className={styles.topbar}>
-                    <button onClick={handleLogout} className={styles.logoutBtn}>Çıkış Yap</button>
-                </header>
+                
 
                 {/* Değişen İçerik Alanı (Ürünler, Siparişler buraya yüklenecek) */}
                 <div className={styles.contentWrapper}>

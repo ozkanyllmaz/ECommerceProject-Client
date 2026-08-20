@@ -1,0 +1,61 @@
+.dashboardContainer {
+    padding: 1rem;
+}
+
+.summaryCards {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    transition: 0.4s ease;
+}
+
+
+.pageTitle{
+    margin-bottom: 1rem;
+}
+
+.card {
+    flex: 1;
+    background: #FBFBF3;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+}
+
+
+.cardValue {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #e3000f;
+    margin-top: 0.5rem;
+}
+
+.chartsGrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Yanyana iki grafik kartı */
+    gap: 1.5rem;
+}
+
+.chartsGridBottom {
+    display: grid;
+    grid-template-columns: 2fr ; /* Yanyana iki grafik kartı */
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.chartCard {
+    background: #FBFBF3;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+}
+
+.chartTitle {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+}

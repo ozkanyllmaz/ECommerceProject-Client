@@ -75,7 +75,12 @@ export const router = createBrowserRouter([
                         path: '/my-orders/:id',
                         element: <OrderDetail />
                     },
+
                 ]
+            },
+            {
+                path: '*',
+                element: <NotFound />
             },
         ],
     },
@@ -126,12 +131,13 @@ export const router = createBrowserRouter([
                             }
                         ]
                     },
+                    {
+                        path: '*',
+                        element: <NotFound />
+                    },
                 ]
             },
         ]
     },
-    {
-        path: '*',
-        element: <NotFound />
-    },
+
 ]);

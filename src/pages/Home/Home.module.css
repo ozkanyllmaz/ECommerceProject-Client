@@ -9,7 +9,7 @@
 .heroGrid {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: repeat(2, 175px);
+    grid-template-rows: repeat(2, 200px);
     /* 250px yüksekliğinde 2 satır */
     gap: 1.5rem;
 }
@@ -22,17 +22,94 @@
     background-color: #f1f3f5;
     text-decoration: none;
     display: block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .bannerImage {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
     transition: transform 0.4s ease, filter 0.4s ease;
 }
 
+.bannerOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg,
+            rgb(0 0 0 / .75) 0%,
+            rgb(0 0 0 / .35) 30%,
+            rgb(0 0 0 / .05) 55%,
+            rgb(0 0 0 / 0) 70%,
+            #fff0 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.bannerContent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-weight: 700;
+    padding: 20px;
+    /* İçeriklerin kenarlara yapışmasını engeller */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Yazıları sola yaslar */
+    justify-content: flex-end;
+    /* Yazıları üstten başlatır (Karartmanın yoğun olduğu yer) */
+    z-index: 2;
+    /* En üstte durur */
+    color: #f5f3f3;
+    /* Yazı rengi beyaz */
+}
+
+.bannerContent h2 {
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: 700;
+}
+
+.bannerContent h3 {
+    font-size: 1.6rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+.bannerContent p {
+    font-size: 1.1rem;
+    margin: 0 0 20px 0;
+    opacity: 0.9;
+}
+
+/* BUTON TASARIMI */
+.bannerButton {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Buton Hover Efekti */
+.bannerButton:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-3px);
+    /* Mouse gelince hafif yukarı zıplar */
+}
+
 .bannerItem:hover .bannerImage {
-    transform: scale(1.1);
+    transform: scale(1.08);
     filter: brightness(0.88);
 }
 
@@ -106,12 +183,17 @@
     flex-direction: column;
     text-decoration: none;
     cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.productCard:hover{
+    transform: scale(1.05);
 }
 
 .imageWrapper {
     background-color: #f8f9fa;
     border-radius: 8px;
-    aspect-ratio: 3/4;
+    aspect-ratio: 1/1;
     /* Dikey formattaki ürün görselleri için standart oran */
     overflow: hidden;
     position: relative;
@@ -121,7 +203,7 @@
 .imageWrapper img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: opacity 0.3s ease;
 }
 
@@ -313,8 +395,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end; /* Butonu en alta iter */
-    aspect-ratio: 370 / 450; /* İstediğiniz 370x450 piksel oranını ekrana duyarlı şekilde kilitler */
+    justify-content: flex-end;
+    /* Butonu en alta iter */
+    aspect-ratio: 370 / 450;
+    /* İstediğiniz 370x450 piksel oranını ekrana duyarlı şekilde kilitler */
     border-radius: 12px;
     overflow: hidden;
     text-decoration: none;
@@ -333,13 +417,15 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Görselin kartı tam kaplamasını sağlar */
+    object-fit: cover;
+    /* Görselin kartı tam kaplamasını sağlar */
     z-index: 1;
     transition: transform 0.5s ease;
 }
 
 .brandCard:hover .brandCardImage {
-    transform: scale(1.05); /* Hover anında hafif yakınlaşma efekti */
+    transform: scale(1.05);
+    /* Hover anında hafif yakınlaşma efekti */
 }
 
 /* Kartın altındaki hap (pill) şeklindeki buton */
@@ -351,8 +437,10 @@
     font-size: 0.95rem;
     font-weight: 600;
     padding: 0.8rem 2.5rem;
-    border-radius: 50px; /* Hap görünümü için yüksek border-radius */
-    margin-bottom: 2rem; /* Kartın altından boşluk */
+    border-radius: 50px;
+    /* Hap görünümü için yüksek border-radius */
+    margin-bottom: 2rem;
+    /* Kartın altından boşluk */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, color 0.3s;
 }

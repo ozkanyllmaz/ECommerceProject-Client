@@ -68,7 +68,7 @@ const Products = () => {
                 // Dinamik Query String Oluşturma
                 const params = new URLSearchParams();
                 params.append('paginationParameter.PageNumber', '1');
-                params.append('paginationParameter.PageSize', '50');
+                params.append('paginationParameter.PageSize', '500');
 
                 if (activeCategoryId) params.append('CategoryId', activeCategoryId);
                 if (activeSearch) params.append('SearchTerm', activeSearch);
@@ -199,7 +199,7 @@ const Products = () => {
                             products.map((product) => (
                                 <Link to={`/products/detail/${product.id}`} key={`pop-${product.id}`} className={styles.productCard}>
                                     <div className={styles.imageWrapper}>
-                                        <img src={product.image || 'https://img.magnific.com/free-photo/global-environmental-sustainability-background-green-technology_53876-124629.jpg?semt=ais_test_b&w=740&q=80'} alt={product.name} />
+                                        <img src={product.imageUrl || 'https://img.magnific.com/free-photo/global-environmental-sustainability-background-green-technology_53876-124629.jpg?semt=ais_test_b&w=740&q=80'} alt={product.name} />
                                     </div>
                                     <div className={styles.priceBlock}>
                                         <span className={styles.oldPrice}>₺{(product.price + (product.price > 10000 ? 1499 : 379))?.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}</span>

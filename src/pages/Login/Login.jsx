@@ -47,6 +47,28 @@ const Login = () => {
                 localStorage.setItem('accessToken', accessToken);
                 localStorage.setItem('refreshToken', refreshToken);
 
+
+                const guestCart = JSON.parse(localStorage.getItem('guestCart')) || [];
+
+                if (guestCart.length > 0) {
+                    try {
+                        for (const item of guestCart) {
+                            await api.post('/ShoppingCarts/AddItemInCart', {
+                                productId: item.productId,
+                                quantity: item.quantity
+                            });
+                        }
+                        localStorage.removeItem('guestCart');
+                        toast.success('Ürün aktarımı başarılı');
+
+                    } catch (error) {
+                        console.error("Sepete ürün aktarılırken hata oluştu: ", error);
+                    }
+                } else{
+                    toast.warn('Sepet boş. Ürün aktarılamadı.');
+                }
+
+
                 try {
                     const token = localStorage.getItem('accessToken');
 
@@ -60,7 +82,7 @@ const Login = () => {
                     } else if (roleClaim) {
                         userRoles = [roleClaim];
                     }
-                    if(userRoles.includes('Admin') || userRoles.includes('Manager')){
+                    if (userRoles.includes('Admin') || userRoles.includes('Manager')) {
                         navigate('/management/dashboard');
                     } else {
                         navigate('/');
@@ -75,9 +97,9 @@ const Login = () => {
                 toast.error(message || 'Giriş işlemi başarısız oldu');
             }
         } catch (error) {
-            if(error.response && error.response.data){
+            if (error.response && error.response.data) {
                 toast.error(error.response.data.detail || 'Giriş işlemi başarısız oldu.');
-                console.warn("Giriş engellendi: ",error.response.data.detail);
+                console.warn("Giriş engellendi: ", error.response.data.detail);
             } else {
                 console.error("Sunucuya ulaşılamadı: ", error);
                 toast.warn('Sunucu ile iletişim kurulamadı. Lütfen daha sonra tekrar deneyiniz.');

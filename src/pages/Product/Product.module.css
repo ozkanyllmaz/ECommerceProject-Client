@@ -157,12 +157,17 @@
     flex-direction: column;
     text-decoration: none;
     cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.productCard:hover{
+    transform: scale(1.05);
 }
 
 .imageWrapper {
     background-color: #f8f9fa;
     border-radius: 8px;
-    aspect-ratio: 4/5;
+    aspect-ratio: 1/1;
     /* Dikey formattaki ürün görselleri için standart oran */
     overflow: hidden;
     position: relative;
@@ -172,7 +177,7 @@
 .imageWrapper img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: opacity 0.3s ease;
 }
 

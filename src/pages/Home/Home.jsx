@@ -37,7 +37,7 @@ const Home = () => {
                     setPcProducts(pcResponse.data.data.data || []);
                 }
 
-                const keyboardResponse = await api.get('/Products/GetAllProduct?CategoryId=aa5ddda8-72e9-4f89-44a2-08deed724037&paginationParameter.PageNumber=1&paginationParameter.PageSize=10'); 
+                const keyboardResponse = await api.get('/Products/GetAllProduct?CategoryId=6915c9cb-e42e-4981-afe8-08defddd979f&paginationParameter.PageNumber=1&paginationParameter.PageSize=10'); 
                 if(keyboardResponse.data && keyboardResponse.data.isSuccessfull){
                     setKeyboardProducts(keyboardResponse.data.data.data || []);
                 }
@@ -55,14 +55,29 @@ const Home = () => {
     return (
         <div className={styles.homeContainer}>
             <section className={styles.heroGrid}>
-                <Link to="/products?categoryId=aa5ddda8-72e9-4f89-44a2-08deed724037" className={`${styles.bannerItem} ${styles.mainBanner}`}>
-                    <img src="src/images/productBanner.jpg" alt="Elektronik Ürünler" className={styles.bannerImage} />
+                <Link to="/products/" className={`${styles.bannerItem} ${styles.mainBanner}`}>
+                    <img src="src/images/productBannersss.jpg" alt="Elektronik Ürünler" className={styles.bannerImage} />
+
+                    <div className={styles.bannerOverlay}></div>
+
+                    <div className={styles.bannerContent}>
+                        <p>Keşfetmeye başla</p>
+                        <button className={styles.bannerButton}>Şimdi Satın Al</button>
+                    </div>
                 </Link>
-                <Link to="/Categories" className={styles.bannerItem}>
-                    <img src="src/images/electronikProductsBannerss.jpg" alt="Elektronik Ürünler" className={styles.bannerImage} />
+                <Link to="/products?categoryId=eff798d3-1a6a-4e6a-c9c2-08defdf4d14d" className={styles.bannerItem}>
+                    <img src="src/images/electronikProductsBannersss.jpg" alt="Elektronik Ürünler" className={styles.bannerImage} />
+                    <div className={styles.bannerOverlay}></div>
+                    <div className={styles.bannerContent}>
+                        <h2>Akıllı Saatleri Keşfet</h2>
+                    </div>
                 </Link>
-                <Link to="/Categories" className={styles.bannerItem}>
-                    <img src="src/images/pcBanner.jpg" alt="Elektronik Ürünler" className={styles.bannerImage} />
+                <Link to="/products?categoryId=aa5ddda8-72e9-4f89-44a2-08deed724037" className={styles.bannerItem}>
+                    <img src="src/images/pcBanners.jpg" alt="Elektronik Ürünler" className={styles.bannerImage} />
+                    <div className={styles.bannerOverlay}></div>
+                    <div className={styles.bannerContent}>
+                        <h2>Bilgisayarları Keşfet</h2>
+                    </div>
                 </Link>
             </section>
 
@@ -87,7 +102,7 @@ const Home = () => {
                         popularProducts.map((product) => (
                             <Link to={`/products/detail/${product.id}`} key={`pop-${product.id}`} className={styles.productCard}>
                                 <div className={styles.imageWrapper}>
-                                    <img src={product.image || 'https://img.magnific.com/free-photo/global-environmental-sustainability-background-green-technology_53876-124629.jpg?semt=ais_test_b&w=740&q=80'} alt={product.name} />
+                                    <img src={product.imageUrl || 'https://img.magnific.com/free-photo/global-environmental-sustainability-background-green-technology_53876-124629.jpg?semt=ais_test_b&w=740&q=80'} alt={product.name} />
                                 </div>
                                 <div className={styles.priceBlock}>
                                     <span className={styles.oldPrice}>₺{(product.price + (product.price > 10000 ? 1499 : 379))?.toLocaleString('tr-TR', { minimumFractionDigits: 2}) }</span>
@@ -125,12 +140,12 @@ const Home = () => {
                         pcProducts.map((product) => (
                             <Link to={`/products/detail/${product.id}`} key={`pop-${product.id}`} className={styles.productCard}>
                                 <div className={styles.imageWrapper}>
-                                    <img src={product.image || 'https://img.magnific.com/free-photo/global-environmental-sustainability-background-green-technology_53876-124629.jpg?semt=ais_test_b&w=740&q=80'} alt={product.name} />
+                                    <img src={product.imageUrl || 'https://img.magnific.com/free-photo/global-environmental-sustainability-background-green-technology_53876-124629.jpg?semt=ais_test_b&w=740&q=80'} alt={product.name} />
                                 </div>
                                 <div className={styles.priceBlock}>
                                     <span className={styles.oldPrice}>₺{(product.price + (product.price > 10000 ? 1499 : 379))?.toLocaleString('tr-TR', { minimumFractionDigits: 2})}</span>
                                     <span className={styles.currentPrice}>
-                                        ₺{product.price}
+                                        ₺{product.price?.toLocaleString('tr-TR', { minimumFractionDigits: 2})}
                                     </span>
                                 </div>
                                 <h3 className={styles.productTitle}>{product.name}</h3>
@@ -145,7 +160,7 @@ const Home = () => {
             {/* KATEGORİ BAZLI ÜRÜNLER ALANI */}
             <section>
                 <div className={styles.sectionHeader}>
-                    <h2 className={styles.sectionTitle}>Öne Çıkan Klavyeler</h2>
+                    <h2 className={styles.sectionTitle}>Öne Çıkan Televizyonlar</h2>
                     <div className={styles.sliderControls}>
                         <button onClick={() => scroll(keyboardProductsRef, 'left')} className={styles.sliderBtn}>
                             <FiChevronLeft size={20} />
@@ -163,12 +178,12 @@ const Home = () => {
                         keyboardProducts.map((product) => (
                             <Link to={`/products/detail/${product.id}`} key={`pop-${product.id}`} className={styles.productCard}>
                                 <div className={styles.imageWrapper}>
-                                    <img src={product.image || 'https://img.magnific.com/free-photo/global-environmental-sustainability-background-green-technology_53876-124629.jpg?semt=ais_test_b&w=740&q=80'} alt={product.name} />
+                                    <img src={product.imageUrl || 'https://img.magnific.com/free-photo/global-environmental-sustainability-background-green-technology_53876-124629.jpg?semt=ais_test_b&w=740&q=80'} alt={product.name} />
                                 </div>
                                 <div className={styles.priceBlock}>
                                     <span className={styles.oldPrice}>₺{(product.price + (product.price > 10000 ? 1499 : 379))?.toLocaleString('tr-TR', { minimumFractionDigits: 2})}</span>
                                     <span className={styles.currentPrice}>
-                                        ₺{product.price}
+                                        ₺{product.price?.toLocaleString('tr-TR', { minimumFractionDigits: 2})}
                                     </span>
                                 </div>
                                 <h3 className={styles.productTitle}>{product.name}</h3>
